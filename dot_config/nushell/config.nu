@@ -703,7 +703,7 @@ if ("~/.cache/starship/init.nu" | path exists) {
 # ALIASES
 #######################################################
 alias pip-upgr = pip install --upgrade pip
-alias set-tw-pat = (let-env ACCESS_TOKEN = (read-aws-ssm.nu ai-github-token | str join))
+alias set-tw-pat = (let-env ACCESS_TOKEN = (read_aws_ssm ai-github-token | str join))
 
 #######################################################
 # BROOT https://github.com/Canop/broot
