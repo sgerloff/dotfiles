@@ -1,0 +1,71 @@
+format = """
+[](light_gray)\
+[ ](bg:light_gray fg:white)\
+$python\
+[](bg:mid_gray fg:light_gray)\
+$directory\
+[](fg:mid_gray bg:dark_gray)\
+$git_branch\
+$git_status\
+[ ](fg:dark_gray)\
+\n$character"""
+
+palette = "material_custom"
+
+[env_var.VIRTUAL_ENV]
+default = ""
+style = "bg:light_gray fg:white"
+format = '[ $env_value ]($style)'
+
+[custom.venv]
+command = "basename $env.VIRTUAL_ENV"
+style = "bg:light_gray fg:white"
+format = '[ $output ]($style)'
+
+[directory]
+style = "fg:blue bg:mid_gray"
+format = "[ $path ]($style)"
+truncation_length = 3
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:teal"
+format = '[[ $symbol $branch ](fg:teal bg:dark_gray)]($style)'
+
+[git_status]
+style = "bg:teal"
+format = '[[($all_status$ahead_behind )](fg:teal bg:dark_gray)]($style)'
+
+[python]
+symbol = ""
+# style = "bg:#212736"
+format = '[ $symbol ($virtualenv) ](bg:light_gray fg:white)'
+python_binary = ['./venv/bin/python', './.venv/bin/python']
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[palettes.material_custom]
+mid_gray = "#073641"
+red = "#EB606B"
+green = "#C3E88D"
+yellow = "#F7EB95"
+teal = "#80CBC3"
+magenta = "#FF2490"
+blue = "#AEDDFF"
+white = "#FFFFFF"
+dark_gray = "#002B36"
+teal_alt = "#7DC6BF"
+purple = "#6C71C3"
+light_gray = "#34434D"
+
