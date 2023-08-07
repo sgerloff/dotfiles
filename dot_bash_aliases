@@ -34,9 +34,15 @@ rustup_cli () {
     fi
 
     echo "Install Nushell"
+    if command -v apt > /dev/null 2>&1; then
+        apt install pkg-config
+        apt install build-essential
+    fi
     cargo install nu --features=dataframe
+
     echo "Install Starship"
     curl -sS https://starship.rs/install.sh | sh
+    
     echo "Install CLI Tools"
     cargo install --locked broot
     cargo +stable install bottom --locked
