@@ -16,3 +16,32 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases_secret ]; then
     . ~/.bash_aliases_secret
 fi
+
+##########################################################################
+# DEFINE CUSTOM BASH FUNCTIONS                                           #
+##########################################################################
+
+rustup_cli () {
+    if command -v cargo > /dev/null 2>&1; then
+        read -p "Cargo seems to be installed! Do you want to continue? (n/Y) " user_continue 
+        if [ $user_continue = "n" ]; then
+            return
+        else
+            echo "Installing rust, please follow the instructions"
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        fi
+    fi
+
+    echo "Install Nushell"
+    cargo install nu --features=dataframe
+    echo "Install Starship"
+    curl -sS https://starship.rs/install.sh | sh
+    echo "Install CLI Tools"
+    cargo install --locked broot
+    cargo +stable install bottom --locked
+    cargo install du-dust
+    cargo install fd-find
+    cargo install ripgrep
+    cargo install sd
+    cargo install tealdeer
+}
