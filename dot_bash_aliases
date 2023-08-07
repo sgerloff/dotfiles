@@ -26,10 +26,10 @@ rustup_cli () {
         read -p "Cargo seems to be installed! Do you want to continue? (n/Y) " user_continue 
         if [ $user_continue = "n" ]; then
             return
-        else
-            echo "Installing rust, please follow the instructions"
-            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
         fi
+    else
+        echo "Installing rust, please follow the instructions"
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     fi
 
     echo "Install Nushell"
