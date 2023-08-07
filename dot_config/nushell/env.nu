@@ -75,23 +75,3 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 # Disable virtualenv prompt to not double up starship
 let-env VIRTUAL_ENV_DISABLE_PROMPT = true
-
-#######################################################
-# CUSTOM COMMANDS
-#######################################################
-
-def venv_create [
-  version: string
-  --venv: string = venv
-  --python: string = ~/.pyenv/shims/python
-  --prompt: string = venv
-] {
-  pyenv local $version
-  virtualenv --clear --reset-app-data --prompt $venv -p $python $venv
-}
-
-def read_aws_ssm [
-  parameter_name: string
-] {
-  aws ssm get-parameter --name $parameter_name | from json | get Parameter.Value
-}

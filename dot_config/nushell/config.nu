@@ -693,6 +693,11 @@ let-env config = {
 }
 
 #######################################################
+# IMPORT CUSTOM FUNCTIONS
+#######################################################
+use custom_scripts.nu *
+
+#######################################################
 # STARSHIP
 #######################################################
 if ("~/.cache/starship/init.nu" | path exists) {
@@ -711,3 +716,4 @@ alias set-tw-pat = (let-env ACCESS_TOKEN = (read_aws_ssm ai-github-token | str j
 if ("~/.config/broot/launcher/nushell/br" | path exists) {
   source ~/.config/broot/launcher/nushell/br
 }
+
