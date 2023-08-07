@@ -118,8 +118,10 @@ fi
 #######################################################
 
 # Add ~/.local/ to PATH
-export PATH=$HOME/.local/bin:$PATH
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    export PATH=$HOME/.local/bin:$PATH
+    . "$HOME/.cargo/env"
+fi
 
 #######################################################
 # EDITOR
