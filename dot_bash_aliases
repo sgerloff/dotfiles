@@ -30,6 +30,7 @@ rustup_cli () {
     else
         echo "Installing rust, please follow the instructions"
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        export PATH=$PATH:$HOME/.cargo/bin
     fi
 
     echo "Install Nushell"
