@@ -41,7 +41,7 @@ rustup_cli () {
     cargo install nu --features=dataframe
 
     echo "Install Starship"
-    curl -sS https://starship.rs/install.sh | sudo sh
+    sudo curl -sS https://starship.rs/install.sh | sh
 
     echo "Install CLI Tools"
     cargo install --locked broot
@@ -51,5 +51,7 @@ rustup_cli () {
     cargo install ripgrep
     cargo install sd
     cargo install tealdeer
+    cargo install --git https://github.com/curlpipe/ox
 
+    source ~/.bashrc
 }
