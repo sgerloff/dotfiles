@@ -35,7 +35,7 @@ rustup_cli () {
 
     echo "Install Nushell"
     if command -v apt > /dev/null 2>&1; then
-        sudo apt install pkg-config
+        sudo apt install libssl-dev
         sudo apt install build-essential
     fi
     cargo install nu --features=dataframe
