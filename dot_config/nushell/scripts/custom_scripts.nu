@@ -15,3 +15,7 @@ export def venv_create [
     pyenv local $version
     virtualenv --clear --reset-app-data --prompt $prompt -p $python $venv
 }
+
+export def-env set-tw-pat [] {
+    $env.ACCESS_TOKEN = (read_aws_ssm ai-github-token | str join)
+}
