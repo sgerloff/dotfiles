@@ -812,6 +812,7 @@ $env.config = {
 # IMPORT CUSTOM FUNCTIONS
 #######################################################
 use custom_scripts.nu *
+use git_completions.nu *
 
 #######################################################
 # STARSHIP

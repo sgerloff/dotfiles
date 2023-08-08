@@ -45,6 +45,8 @@ rustup_cli () {
 
     echo "Install CLI Tools"
     cargo install --locked broot
+    broot --install
+
     cargo +stable install bottom --locked
     cargo install du-dust
     cargo install fd-find
