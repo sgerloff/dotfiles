@@ -9,11 +9,16 @@ export def read_aws_ssm [
 export def venv_create [
     version: string
     --venv: string = venv
-    --python: string = ~/.pyenv/shims/python
+    --python: string = ""
     --prompt: string = venv
 ] {
     pyenv local $version
-    virtualenv --clear --reset-app-data --prompt $prompt -p $python $venv
+
+    mut python_path = $python
+    if ($python | is-empty) {
+        $python_path = ($env.HOME | path join .pyenv/shims/python)
+    }
+    virtualenv --clear --reset-app-data --prompt $prompt -p $python_path $venv
 }
 
 export def-env set-tw-pat [] {
