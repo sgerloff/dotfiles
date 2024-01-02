@@ -21,10 +21,6 @@ export def venv_create [
     virtualenv --clear --reset-app-data --prompt $prompt -p $python_path $venv
 }
 
-export def-env set-tw-pat [] {
-    $env.ACCESS_TOKEN = (read_aws_ssm ai-github-token | str join)
-}
-
 export def describe-s3-bucket [
     bucket_name?: string
     --summary: string = "/tmp/_s3_summary.txt"
