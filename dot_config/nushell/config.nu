@@ -785,3 +785,10 @@ alias pip-upgr = pip install --upgrade pip
 if ("~/.config/broot/launcher/nushell/br" | path exists) {
   source ~/.config/broot/launcher/nushell/br
 }
+
+#######################################################
+# Read host specific secrets
+#######################################################
+if ($"($env.HOME)/.env.secrets" | path exists) {
+    open $"($env.HOME)/.env.secrets" | lines | parse "{KEY}={VALUE}" | reduce -f {} {|it, row| $row | upsert $it.KEY ($it.VALUE | str trim --char '"') } | load-env
+}

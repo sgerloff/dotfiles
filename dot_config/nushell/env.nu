@@ -95,3 +95,10 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 # Disable virtualenv prompt to not double up starship
 $env.VIRTUAL_ENV_DISABLE_PROMPT = true
+
+#######################################################
+# Read host specific secrets
+#######################################################
+if ($"($env.HOME)/.env.secrets" | path exists) {
+    open $"($env.HOME)/.env.secrets" | lines | parse "{KEY}={VALUE}" | reduce -f {} {|it, row| $row | upsert $it.KEY ($it.VALUE | str trim --char '"') } | load-env
+}
