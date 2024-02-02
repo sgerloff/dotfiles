@@ -123,6 +123,9 @@ if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
+# Created by `pipx` on 2024-01-04 13:38:55
+export PATH="$PATH:/home/sgerloff/.gyg/bin"
+
 #######################################################
 # EDITOR
 #######################################################
@@ -203,3 +206,10 @@ _gopass_bash_autocomplete() {
  }
 
 complete -F _gopass_bash_autocomplete gopass
+
+#######################################################
+# Read Secret Envs
+#######################################################
+if [ -f $HOME/.env.secrets ]; then
+    source $HOME/.env.secrets
+fi
