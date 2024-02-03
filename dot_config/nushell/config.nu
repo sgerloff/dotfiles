@@ -782,7 +782,7 @@ alias pip-upgr = pip install --upgrade pip
 #######################################################
 # BROOT https://github.com/Canop/broot
 #######################################################
-if ("~/.config/broot/launcher/nushell/br" | path exists) {
+if ($"~/.config/broot/launcher/nushell/br" | path exists) {
   source ~/.config/broot/launcher/nushell/br
 }
 

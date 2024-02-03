@@ -102,3 +102,24 @@ $env.VIRTUAL_ENV_DISABLE_PROMPT = true
 if ($"($env.HOME)/.env.secrets" | path exists) {
     open $"($env.HOME)/.env.secrets" | lines | parse "{KEY}={VALUE}" | reduce -f {} {|it, row| $row | upsert $it.KEY ($it.VALUE | str trim --char '"') } | load-env
 }
+
+#######################################################
+# Shellenv Brew
+#######################################################
+if ("/home/linuxbrew" | path exists) {
+    $env.HOMEBREW_PREFIX = "/home/linuxbrew/.linuxbrew"
+    $env.HOMEBREW_CELLAR = "/home/linuxbrew/.linuxbrew/Cellar"
+    $env.HOMEBREW_REPOSITORY = "/home/linuxbrew/.linuxbrew/Homebrew"
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/bin')
+    $env.PATH = ($env.PATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/sbin')
+    if "MANPATH" in $env {
+        $env.MANPATH = ($env.MANPATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/share/man')
+    } else {
+        $env.MANPATH = /home/linuxbrew/.linuxbrew/share/man
+    }
+    if "INFOPATH" in $env {
+        $env.INFOPATH = ($env.INFOPATH | split row (char esep) | prepend '/home/linuxbrew/.linuxbrew/share/info')
+    } else {
+        $env.INFOPATH = "/home/linuxbrew/.linuxbrew/share/info"
+    }
+}
