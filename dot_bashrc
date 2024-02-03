@@ -127,18 +127,6 @@ fi
 export PATH="$PATH:/home/sgerloff/.gyg/bin"
 
 #######################################################
-# EDITOR
-#######################################################
-
-if [ -x "$(command -v micro)" ]; then
-    export EDITOR=micro
-    export VISUAL=micro
-else
-    export EDITOR=nano
-    export VISUAL=nano
-fi
-
-#######################################################
 # STARSHIP
 #######################################################
 
@@ -217,11 +205,23 @@ fi
 #######################################################
 # Shellenv Brew
 #######################################################
-if [ -f "/home/linuxbrew/" ]; then
+if [ -d "/home/linuxbrew/" ]; then
     export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
     export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
     export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
     export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
     export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
     export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
+fi
+
+#######################################################
+# EDITOR
+#######################################################
+
+if [ -x "$(command -v micro)" ]; then
+    export EDITOR=micro
+    export VISUAL=micro
+else
+    export EDITOR=nano
+    export VISUAL=nano
 fi
