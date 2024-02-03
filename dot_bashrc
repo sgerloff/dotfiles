@@ -130,9 +130,9 @@ export PATH="$PATH:/home/sgerloff/.gyg/bin"
 # EDITOR
 #######################################################
 
-if [ -x "$(command -v ox)" ]; then
-    export EDITOR=ox
-    export VISUAL=ox
+if [ -x "$(command -v micro)" ]; then
+    export EDITOR=micro
+    export VISUAL=micro
 else
     export EDITOR=nano
     export VISUAL=nano
