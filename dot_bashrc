@@ -225,3 +225,15 @@ else
     export EDITOR=nano
     export VISUAL=nano
 fi
+
+#######################################################
+# Cheat Sheet
+#######################################################
+CHEAT_SHEET_DIR="$HOME/bin"
+CHEAT_SHEET_FILE="$CHEAT_SHEET_DIR/cht.sh"
+if [ ! -f $CHEAT_SHEET_FILE ]; then
+    mkdir -p $CHEAT_SHEET_DIR
+    curl https://cht.sh/:cht.sh > $CHEAT_SHEET_FILE
+    chmod a+x $CHEAT_SHEET_FILE
+fi
+    
