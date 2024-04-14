@@ -1,8 +1,8 @@
 format = """
-[](lavender)\
-[](bg:lavender fg:base)\
+[](mauve)\
+[](bg:mauve fg:base)\
 $directory\
-[](bg:surface1 fg:lavender)\
+[](bg:surface1 fg:mauve)\
 $git_branch\
 $git_status\
 [](bg:surface0 fg:surface1)\
@@ -13,7 +13,7 @@ $python\
 palette = "catppuccin_mocha"
 
 [directory]
-style = "bold fg:crust bg:lavender"
+style = "bold fg:crust bg:mauve"
 format = "[ $path ]($style)"
 truncation_length = 3
 
