@@ -13,6 +13,9 @@ if [ -f /etc/bashrc ]; then
 	 . /etc/bashrc
 fi
 
+# Set vim mode for line editor
+set -o vi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -36,7 +39,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -124,7 +127,9 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # Created by `pipx` on 2024-01-04 13:38:55
-export PATH="$PATH:/home/sgerloff/.gyg/bin"
+if [ -f "$HOME/.gyg" ]; then
+    export PATH="$PATH:/home/sgerloff/.gyg/bin"
+fi
 
 #######################################################
 # STARSHIP
@@ -180,26 +185,17 @@ if [ -f ~/.config/broot/launcher/bash/br ]; then
 fi
 
 #######################################################
-# GOPASS Completions
-#######################################################
-
-_gopass_bash_autocomplete() {
-     local cur opts base
-     COMPREPLY=()
-     cur="${COMP_WORDS[COMP_CWORD]}"
-     opts=$( ${COMP_WORDS[@]:0:$COMP_CWORD} --generate-bash-completion )
-     local IFS=$'\n'
-     COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-     return 0
- }
-
-complete -F _gopass_bash_autocomplete gopass
-
-#######################################################
 # Read Secret Envs
 #######################################################
 if [ -f $HOME/.env.secrets ]; then
     source $HOME/.env.secrets
+fi
+
+#######################################################
+# Device specific bash settings
+#######################################################
+if [ -f $HOME/.bashrc_system ]; then
+    source $HOME/.bashrc_system
 fi
 
 #######################################################
@@ -218,9 +214,12 @@ fi
 # EDITOR
 #######################################################
 
-if [ -x "$(command -v micro)" ]; then
-    export EDITOR=micro
-    export VISUAL=micro
+if [ -x "$(command -v nvim)" ]; then
+    export EDITOR=nvim
+    export VISUAL=nvim
+elif [ -x "$(command -v vim)" ]; then
+    export EDITOR=vim
+    export VISUAL=vim
 else
     export EDITOR=nano
     export VISUAL=nano
@@ -229,6 +228,7 @@ fi
 #######################################################
 # Cheat Sheet
 #######################################################
+
 CHEAT_SHEET_DIR="$HOME/bin"
 CHEAT_SHEET_FILE="$CHEAT_SHEET_DIR/cht.sh"
 if [ ! -f $CHEAT_SHEET_FILE ]; then
@@ -236,4 +236,12 @@ if [ ! -f $CHEAT_SHEET_FILE ]; then
     curl https://cht.sh/:cht.sh > $CHEAT_SHEET_FILE
     chmod a+x $CHEAT_SHEET_FILE
 fi
-    
+
+#######################################################
+# fzf configs
+#######################################################
+
+if [ -x "$command -v fzf" ]; then
+    eval "$(fzf --bash)"
+fi
+
