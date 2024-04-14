@@ -10,14 +10,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 ##########################################################################
-# MASCHINE AND USER SPECIFIC ALIASES CONTAINING CONFIDENTIAL INFORMATION #
-##########################################################################
-
-if [ -f ~/.bash_aliases_secret ]; then
-    . ~/.bash_aliases_secret
-fi
-
-##########################################################################
 # DEFINE CUSTOM BASH FUNCTIONS                                           #
 ##########################################################################
 
@@ -56,4 +48,21 @@ rustup_cli () {
     cargo install --git https://github.com/curlpipe/ox
 
     source ~/.bashrc
+}
+
+
+install_homebrew () {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+upgrade_cli () {
+   brew install starship
+   brew install dust
+   brew install fzf
+   brew install nvim
+   brew install ripgrep
+   brew install sd
+   brew install tealdeer
+   brew install bat
+   brew install bottom
 }
