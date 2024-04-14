@@ -1,8 +1,8 @@
 format = """
-[](mauve)\
-[](bg:mauve fg:base)\
+[](blue)\
+[](bg:blue fg:base)\
 $directory\
-[](bg:surface1 fg:mauve)\
+[](bg:surface1 fg:blue)\
 $git_branch\
 $git_status\
 [](bg:surface0 fg:surface1)\
@@ -13,7 +13,7 @@ $python\
 palette = "catppuccin_mocha"
 
 [directory]
-style = "bold fg:crust bg:mauve"
+style = "bold fg:crust bg:blue"
 format = "[ $path ]($style)"
 truncation_length = 3
 
@@ -26,11 +26,11 @@ truncation_length = 3
 [git_branch]
 symbol = ""
 style = "bg:surface0"
-format = '[[ $symbol $branch ](fg:lavender bg:surface1)]($style)'
+format = '[[ $symbol $branch ](fg:blue bg:surface1)]($style)'
 
 [git_status]
 style = "bg:surface0"
-format = '[[($all_status$ahead_behind )](fg:lavender bg:surface1)]($style)'
+format = '[[($all_status$ahead_behind )](fg:blue bg:surface1)]($style)'
 
 [python]
 symbol = ""
