@@ -82,4 +82,5 @@ upgrade_cli () {
    brew install bottom
    brew install eza
    brew install thefuck
+   brew install tmux
 }
