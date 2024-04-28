@@ -15,7 +15,18 @@ fi
 ##########################################################################
 # PIPX                                                                   #
 ##########################################################################
-alias pipx="$HOME/.pipx/pipx310_venv/bin/pipx"
+
+function pipx_version () {
+  if [ ! -f "$HOME/.pipx/pipx_$1/bin/pipx" ]; then
+    pyenv install --skip-existing $1
+    pyenv global $1
+    python -m venv $HOME/.pipx/pipx_$1
+    $HOME/.pipx/pipx_$1/bin/pip install pipx
+  fi
+  
+  $HOME/.pipx/pipx_$1/bin/pipx ${@:2}
+}
+
 ##########################################################################
 # CUSTOM FZF COMMANDS                                                    #
 ##########################################################################
