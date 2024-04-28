@@ -24,46 +24,20 @@ function gch () {
 # DEFINE CUSTOM BASH FUNCTIONS                                           #
 ##########################################################################
 
-rustup_cli () {
-    if command -v cargo > /dev/null 2>&1; then
-        read -p "Cargo seems to be installed! Do you want to continue? (n/Y) " user_continue 
-        if [ $user_continue = "n" ]; then
-            return
-        fi
-    else
-        echo "Installing rust, please follow the instructions"
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        source ~/.bashrc
-    fi
-
-    echo "Install Nushell"
-    if command -v apt > /dev/null 2>&1; then
-        sudo apt install libssl-dev
-        sudo apt install build-essential
-    fi
-    cargo install nu --features=dataframe
-
-    echo "Install Starship"
-    sudo sh -c "curl -sS https://starship.rs/install.sh | sh"
-
-    echo "Install CLI Tools"
-    cargo install --locked broot
-    broot --install
-
-    cargo +stable install bottom --locked
-    cargo install du-dust
-    cargo install fd-find
-    cargo install ripgrep
-    cargo install sd
-    cargo install tealdeer
-    cargo install --git https://github.com/curlpipe/ox
-
-    source ~/.bashrc
-}
-
-
 install_homebrew () {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    curl -fsSL -o /tmp/install_homebrew.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    if [ -x "$(command -v bat)" ]; then
+      bat /tmp/install_homebrew.sh
+    else
+      cat /tmp/install_homebrew.sh
+    fi
+    read -p "Did you review the script and want to execute it? [y/n]" -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      /tmp/install_homebrew.sh
+    else
+      echo "Abort homebrew installation!"
+    fi
 }
 
 upgrade_cli () {
@@ -83,8 +57,11 @@ upgrade_cli () {
    brew install bottom
    brew install eza
    brew install thefuck
+
    brew install tmux
    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
       git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    fi
+
+   brew install pyenv
 }
