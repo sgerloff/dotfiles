@@ -279,10 +279,23 @@ _fzf_compget_dir() {
 
 #######################################################
 # pyenv setup
-# #######################################################
+# #####################################################
 
 if [ -x "$(command -v pyenv)" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
+fi
+
+#######################################################
+# Setup Python
+# #####################################################
+
+export PIP_REQUIRE_VIRTUALENV=true  # Avoid installing to global environment
+if [ ! -d "$HOME/.pipx/pipx310_venv" ]; then
+  pyenv install 3.10
+  pyenv global 3.10
+  mkdir -p "$HOME/.pipx"
+  python -m venv "$HOME/.pipx/pipx310_venv"
+  $HOME/.pipx/pipx310_venv/bin/pip install pipx
 fi
