@@ -299,3 +299,11 @@ if [ ! -d "$HOME/.pipx/pipx310_venv" ]; then
   python -m venv "$HOME/.pipx/pipx310_venv"
   $HOME/.pipx/pipx310_venv/bin/pip install pipx
 fi
+
+#######################################################
+# direnv
+# #####################################################
+
+if [ -x "$(command -v direnv)" ]; then
+  eval "$(direnv hook bash)"
+fi

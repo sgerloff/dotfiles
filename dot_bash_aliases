@@ -57,6 +57,7 @@ install_homebrew () {
 
 upgrade_cli () {
    brew install starship
+   brew install direnv
    brew install dust
    brew install fzf
    brew install nvim
