@@ -292,13 +292,6 @@ fi
 # #####################################################
 
 export PIP_REQUIRE_VIRTUALENV=true  # Avoid installing to global environment
-if [ ! -d "$HOME/.pipx/pipx310_venv" ]; then
-  pyenv install 3.10
-  pyenv global 3.10
-  mkdir -p "$HOME/.pipx"
-  python -m venv "$HOME/.pipx/pipx310_venv"
-  $HOME/.pipx/pipx310_venv/bin/pip install pipx
-fi
 
 #######################################################
 # direnv
