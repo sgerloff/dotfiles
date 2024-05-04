@@ -24,6 +24,7 @@ lg = !"git lg1"
 
 [core]
     pager = delta
+    excludefile = ~/.gitignore
 
 [interactive]
     diffFilter = delta --color-only
