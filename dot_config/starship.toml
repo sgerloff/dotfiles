@@ -7,7 +7,6 @@ $git_branch\
 $git_status\
 [](bg:surface0 fg:surface1)\
 $python\
-$direnv\
 [ ](fg:surface0)\
 \n$character"""
 
@@ -39,16 +38,16 @@ symbol = ""
 format = '[ $symbol ($virtualenv) ](bg:surface0 fg:subtext0)'
 python_binary = ['./venv/bin/python', './.venv/bin/python']
 
-[direnv]
-disabled = false
-format = '[$symbol$loaded/$allowed]($style)'
-style = 'bg:surface0 fg:subtext0'
-symbol = ' '
-allowed_msg = ''
-not_allowed_msg = ''
-denied_msg = '󰀦'
-loaded_msg = ''
-unloaded_msg = ''
+# [direnv]
+# disabled = true
+# format = '[$symbol$loaded/$allowed]($style)'
+# style = 'bg:surface0 fg:subtext0'
+# symbol = ' '
+# allowed_msg = ''
+# not_allowed_msg = ''
+# denied_msg = '󰀦'
+# loaded_msg = ''
+# unloaded_msg = ''
 
 [time]
 disabled = false
