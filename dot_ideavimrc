@@ -1,0 +1,66 @@
+let mapleader=" "
+
+""" Plugins ------------------------------------
+Plug 'justinmk/vim-sneak'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'michaeljsmith/vim-indent-object'
+set which-key
+""" Common Settings ---------------------------
+set clipboard+=unnamed
+set clipboard+=ideaput
+set scrolloff=5
+set incsearch
+set number relativenumber
+set ideajoin
+set idearefactormode=keep
+set notimeout "Necessary for which-key
+""" Develop Toggle UI -------------------------
+:map <leader>uz <Action>(ToggleDistractionFreeMode)
+""" Develop .ideavimrc ------------------------
+:map \e :e ~/.ideavimrc<CR>
+:map \r <Action>(IdeaVim.ReloadVimRc.reload)
+""" Common Settings ---------------------------
+:map <leader>ft <Action>(ActivateTerminalToolWindow)
+:map <leader>fT <Action>(Terminal.OpenInTerminal)
+:map <leader>fh <Action>(HideActiveWindow)
+""" Telescope Like ----------------------------
+:map <leader><leader> <Action>(GotoFile)
+
+""" Window Navigation ----------------------------
+:map <leader>w- <Action>(SplitVertically)
+:map <leader>wu <Action>(Unsplit)
+:map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+:map <A-j> <Action>(PreviousTab)
+:map <A-k> <Action>(NextTab)
+:map <leader>ww <Action>(NextWindow)
+:map <Leader>q <Action>(CloseContent)
+":map <leader>qq <Action>(CloseAllEditors)
+""" Mappings ----------------------------
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+:map <leader>zc <Action>(CollapseAllRegions)
+:map <leader>zo <Action>(ExpandAllRegions)
+
+:map <leader>cf <Action>(ReformatCode)
+:map <leader>cr <Action>(RenameElement)
+:imap <c-k> <Action>(QuickJavaDoc)
+
+:map <leader>e :NERDTreeFocus<CR>
+:map <leader>E :NERDTreeClose<CR>
+
+nnoremap <C-Left> :action StretchSplitToLeft<CR>
+nnoremap <C-Right> :action StretchSplitToRight<CR>
+nnoremap <C-Up> :action StretchSplitToTop<CR>
+nnoremap <C-Down> :action StretchSplitToBottom<CR>
