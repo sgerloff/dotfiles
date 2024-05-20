@@ -26,7 +26,7 @@ set notimeout "Necessary for which-key
 """ Common Settings ---------------------------
 :map <leader>ft <Action>(ActivateTerminalToolWindow)
 :map <leader>fT <Action>(Terminal.OpenInTerminal)
-:map <leader>fh <Action>(HideActiveWindow)
+:map <leader>fh <Action>(HideAllWindows)
 """ Telescope Like ----------------------------
 :map <leader><leader> <Action>(GotoFile)
 
