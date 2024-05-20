@@ -26,7 +26,7 @@ set notimeout "Necessary for which-key
 """ Common Settings ---------------------------
 :map <leader>ft <Action>(ActivateTerminalToolWindow)
 :map <leader>fT <Action>(Terminal.OpenInTerminal)
-:map <leader>fh <Action>(HideAllWindows)
+:map <leader>fh <Action>(HideActiveWindow)
 """ Telescope Like ----------------------------
 :map <leader><leader> <Action>(GotoFile)
 
@@ -52,6 +52,9 @@ nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 :map <leader>zc <Action>(CollapseAllRegions)
 :map <leader>zo <Action>(ExpandAllRegions)
+
+:map <leader>gi <Action>(QuickImplementations)
+:map <leader>gI <Action>(GotoImplementation)
 
 :map <leader>cf <Action>(ReformatCode)
 :map <leader>cr <Action>(RenameElement)
