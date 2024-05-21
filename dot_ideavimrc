@@ -67,3 +67,7 @@ nnoremap <C-Left> :action StretchSplitToLeft<CR>
 nnoremap <C-Right> :action StretchSplitToRight<CR>
 nnoremap <C-Up> :action StretchSplitToTop<CR>
 nnoremap <C-Down> :action StretchSplitToBottom<CR>
+
+:map <leader>db <action>(ToggleLineBreakpoint)
+:map <leader>dB <action>(AddConditionalBreakpoint)
+
