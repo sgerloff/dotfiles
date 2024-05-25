@@ -43,8 +43,8 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
-:map <A-j> <Action>(PreviousTab)
-:map <A-k> <Action>(NextTab)
+:map <A-h> <Action>(PreviousTab)
+:map <A-l> <Action>(NextTab)
 :map <leader>ww <Action>(NextWindow)
 :map <Leader>q <Action>(CloseContent)
 ":map <leader>qq <Action>(CloseAllEditors)
@@ -69,10 +69,11 @@ nnoremap zo :action ExpandRegion<CR>
 :imap <c-k> <Action>(QuickJavaDoc)
 
 """ Code Actions ------------------------
+:map <leader>cc <Action>(ShowIntentionActions)
 :map <leader>cf <Action>(ReformatCode)
 :map <leader>cr <Action>(RenameElement)
 :map <leader>cv <Action>(IntroduceVariable)
-:map <leader>cc <Action>(IntroduceConstant)
+:map <leader>cC <Action>(IntroduceConstant)
 :map <leader>cf <Action>(IntroduceField)
 :map <leader>cp <Action>(IntroduceParameter)
 
@@ -80,3 +81,22 @@ nnoremap zo :action ExpandRegion<CR>
 :map <leader>db <action>(ToggleLineBreakpoint)
 :map <leader>dB <action>(AddConditionalBreakpoint)
 
+""" Run ---------------------------------
+:map <leader>rr <action>(Run)
+:map <leader>rf <action>(RunClass)
+:map <leader>rp <action>(ExecuteInPyConsoleAction)
+
+""" Experiment with indent based navigation
+function! GoStart(type) abort
+  normal! `[
+endfunction
+
+
+function! GoEnd(type) abort
+  normal! `]
+endfunction
+
+nnoremap <silent> gs :set opfunc=GoStart<CR>g@
+nnoremap <silent> ge :set opfunc=GoEnd<CR>g@
+nmap <A-j> gsai
+nmap <A-k> geai
