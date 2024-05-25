@@ -31,7 +31,8 @@ set notimeout "Necessary for which-key
 :map <leader><leader> <Action>(GotoFile)
 
 """ Window Navigation ----------------------------
-:map <leader>w- <Action>(SplitVertically)
+:map <leader>wv <Action>(SplitVertically)
+:map <leader>wh <Action>(SplitHorizontally)
 :map <leader>wu <Action>(Unsplit)
 :map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
@@ -47,18 +48,6 @@ nnoremap <c-k> <c-w>k
 :map <leader>ww <Action>(NextWindow)
 :map <Leader>q <Action>(CloseContent)
 ":map <leader>qq <Action>(CloseAllEditors)
-""" Mappings ----------------------------
-nnoremap zc :action CollapseRegion<CR>
-nnoremap zo :action ExpandRegion<CR>
-:map <leader>zc <Action>(CollapseAllRegions)
-:map <leader>zo <Action>(ExpandAllRegions)
-
-:map <leader>gi <Action>(QuickImplementations)
-:map <leader>gI <Action>(GotoImplementation)
-
-:map <leader>cf <Action>(ReformatCode)
-:map <leader>cr <Action>(RenameElement)
-:imap <c-k> <Action>(QuickJavaDoc)
 
 :map <leader>e :NERDTreeFocus<CR>
 :map <leader>E :NERDTreeClose<CR>
@@ -67,7 +56,27 @@ nnoremap <C-Left> :action StretchSplitToLeft<CR>
 nnoremap <C-Right> :action StretchSplitToRight<CR>
 nnoremap <C-Up> :action StretchSplitToTop<CR>
 nnoremap <C-Down> :action StretchSplitToBottom<CR>
+""" Mappings ----------------------------
+""" Section/Folds/Collapse Mappings -----
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+:map <leader>zc <Action>(CollapseAllRegions)
+:map <leader>zo <Action>(ExpandAllRegions)
 
+""" Hints -------------------------------
+:map <leader>gi <Action>(QuickImplementations)
+:map <leader>gI <Action>(GotoImplementation)
+:imap <c-k> <Action>(QuickJavaDoc)
+
+""" Code Actions ------------------------
+:map <leader>cf <Action>(ReformatCode)
+:map <leader>cr <Action>(RenameElement)
+:map <leader>cv <Action>(IntroduceVariable)
+:map <leader>cc <Action>(IntroduceConstant)
+:map <leader>cf <Action>(IntroduceField)
+:map <leader>cp <Action>(IntroduceParameter)
+
+""" Debugging ---------------------------
 :map <leader>db <action>(ToggleLineBreakpoint)
 :map <leader>dB <action>(AddConditionalBreakpoint)
 
