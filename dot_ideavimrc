@@ -87,16 +87,5 @@ nnoremap zo :action ExpandRegion<CR>
 :map <leader>rp <action>(ExecuteInPyConsoleAction)
 
 """ Experiment with indent based navigation
-function! GoStart(type) abort
-  normal! `[
-endfunction
-
-
-function! GoEnd(type) abort
-  normal! `]
-endfunction
-
-nnoremap <silent> gs :set opfunc=GoStart<CR>g@
-nnoremap <silent> ge :set opfunc=GoEnd<CR>g@
-nmap <A-j> gsai
-nmap <A-k> geai
+nmap <A-j> <Action>(MethodDown)mxz<CR>5<C-y>`x
+nmap <A-k> <Action>(MethodUp)mxz<CR>5<C-e>`x
