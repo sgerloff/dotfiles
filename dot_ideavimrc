@@ -1,3 +1,5 @@
+source ~/.vimrc
+
 let mapleader=" "
 
 """ Plugins ------------------------------------
@@ -47,7 +49,6 @@ nnoremap <c-k> <c-w>k
 :map <A-l> <Action>(NextTab)
 :map <leader>ww <Action>(NextWindow)
 :map <Leader>q <Action>(CloseContent)
-":map <leader>qq <Action>(CloseAllEditors)
 
 :map <leader>e :NERDTreeFocus<CR>
 :map <leader>E :NERDTreeClose<CR>

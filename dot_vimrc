@@ -1,0 +1,1 @@
+vnoremap <C-c> "+y
