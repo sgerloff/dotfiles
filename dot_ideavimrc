@@ -74,7 +74,7 @@ nnoremap zo :action ExpandRegion<CR>
 :map <leader>cr <Action>(RenameElement)
 :map <leader>cv <Action>(IntroduceVariable)
 :map <leader>cC <Action>(IntroduceConstant)
-:map <leader>cf <Action>(IntroduceField)
+:map <leader>cF <Action>(IntroduceField)
 :map <leader>cp <Action>(IntroduceParameter)
 
 """ Debugging ---------------------------
