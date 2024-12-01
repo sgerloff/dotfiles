@@ -3,14 +3,14 @@
 -- Add any additional keymaps here
 
 local treesitter_keymaps = {
-  { key = "<leader>ta", motion = "goto_next_start", textobj = "@parameter.inner" },
-  { key = "<leader>tA", motion = "goto_next_end", textobj = "@parameter.inner" },
-  { key = "<leader>Ta", motion = "goto_previous_start", textobj = "@parameter.inner" },
-  { key = "<leader>TA", motion = "goto_previous_end", textobj = "@parameter.inner" },
-  { key = "<leader>tf", motion = "goto_next_start", textobj = "@function.outer" },
-  { key = "<leader>tF", motion = "goto_next_end", textobj = "@function.outer" },
-  { key = "<leader>Tf", motion = "goto_previous_start", textobj = "@function.outer" },
-  { key = "<leader>TF", motion = "goto_previous_end", textobj = "@function.outer" },
+  { key = "+a", motion = "goto_next_start", textobj = "@parameter.inner" },
+  { key = "+A", motion = "goto_next_end", textobj = "@parameter.inner" },
+  { key = "üa", motion = "goto_previous_start", textobj = "@parameter.inner" },
+  { key = "üA", motion = "goto_previous_end", textobj = "@parameter.inner" },
+  { key = "+f", motion = "goto_next_start", textobj = "@function.outer" },
+  { key = "+F", motion = "goto_next_end", textobj = "@function.outer" },
+  { key = "üf", motion = "goto_previous_start", textobj = "@function.outer" },
+  { key = "üF", motion = "goto_previous_end", textobj = "@function.outer" },
 }
 
 for _, map in ipairs(treesitter_keymaps) do
