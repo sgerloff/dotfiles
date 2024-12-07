@@ -1,0 +1,7 @@
+[
+  {
+    "command": "workbench.action.terminal.focus",
+    "key": "space f t"
+    "when": "editorTextFocus && neovim.mode != insert"
+  }
+]

@@ -1,0 +1,33 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.minimumContrastRatio": 1,
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "window.titleBarStyle": "custom",
+    "python.analysis.extraPaths": [],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.REPL.sendToNativeREPL": true,
+    "databricks.connectionManager": "VSCode Settings",
+    "databricks.connections": [
+        {
+            "apiRootUrl": "${env:DATABRICKS_HOST}",
+            "displayName": "Databricks GYG",
+            "localSyncFolder": "/home/gerloff/Documents/Projects/vscode_databricks",
+            "personalAccessToken": "${env:DATABRICKS_TOKEN}"
+        }
+    ],
+    "databricks.lastActiveConnection": "GYG Laptop",
+    "databricks.sensitiveValueStore": "VSCodeSettings",
+    "databricks.connection.default.apiRootUrl": "${env:DATABRICKS_HOST}",
+    "databricks.connection.default.displayName": "GYG Laptop",
+    "databricks.connection.default.localSyncFolder": "/home/sgerloff/.databricks_powertools/",
+    "databricks.connection.default.personalAccessToken": "${env:DATABRICKS_TOKEN}",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "extensions.ignoreRecommendations": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "keyboard.dispatch": "keyCode",
+    "jupyter.interactiveWindow.cellMarker.codeRegex": "^(#\\s*%%|#\\s*\\<codecell\\>|#\\s*In\\[\\d*?\\]|#\\s*In\\[ \\]|#\\sCOMMAND\\s-*)"
+}
