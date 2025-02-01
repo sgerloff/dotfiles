@@ -1,7 +1,3 @@
-if true then
-  return {}
-end
--- unreachable
 return {
   {
     "echasnovski/mini.surround",
