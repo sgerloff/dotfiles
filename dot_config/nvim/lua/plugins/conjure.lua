@@ -1,7 +1,7 @@
 return {
   {
     "Olical/conjure",
-    enabled = true,
+    enabled = false,
     version = "^4.54.0",
     lazy = true,
     init = function()

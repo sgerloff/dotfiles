@@ -7,7 +7,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "PaterJason/cmp-conjure",
+      -- "PaterJason/cmp-conjure",
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -45,7 +45,9 @@ return {
           { name = "path" }
         }, {
           { name = "buffer" },
-        }, { name = "conjure" }),
+        }
+        -- { name = "conjure" }
+        ),
         formatting = defaults.formatting,
         experimental = {
           ghost_text = true

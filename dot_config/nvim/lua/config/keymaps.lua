@@ -123,7 +123,7 @@ M.LazyPluginKeys["folke/snacks.nvim"] = {
     "<leader>fP",
     function()
       Snacks.terminal.toggle(require("config.utils").infer_python_shell(),
-        { win = { position = "right", ft = "python", min_width=85, width=0.4 } })
+        { win = { position = "right", ft = "python", min_width = 85, width = 0.4 } })
     end,
     desc = "Toggle Terminal"
   }
