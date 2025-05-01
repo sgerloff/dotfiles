@@ -27,28 +27,27 @@ return {
       keymaps = {
         toggle_repl = "<leader>rr", -- toggles the repl open and closed.
         restart_repl = "<leader>rR", -- calls `IronRestart` to restart the repl
-        send_motion = "<leader>sc",
-        visual_send = "<leader>sc",
-        send_file = "<leader>sf",
-        send_line = "<leader>sl",
-        send_paragraph = "<leader>sp",
-        send_until_cursor = "<leader>su",
-        send_mark = "<leader>sm",
-        send_code_block = "<leader>sb",
-        send_code_block_and_move = "<leader>sn",
-
+        send_motion = "<leader>rc",
+        visual_send = "<leader>rc",
+        send_file = "<leader>rf",
+        send_line = "<leader>rl",
+        send_paragraph = "<leader>rp",
+        send_until_cursor = "<leader>ru",
+        send_mark = "<leader>rm",
+        send_code_block = "<leader>rb",
+        send_code_block_and_move = "<leader>rn",
         mark_motion = "<leader>mc",
         mark_visual = "<leader>mc",
         remove_mark = "<leader>md",
-        cr = "<leader>s<cr>",
-        interrupt = "<leader>s<leader>",
-        exit = "<leader>sq",
-        clear = "<leader>cl",
+        cr = "<leader>r<cr>",
+        interrupt = "<leader>r<leader>",
+        exit = "<leader>rq",
+        clear = "<leader>Rr",
       },
       highlight = {
         italic = true
       },
       ignore_blank_lines = true,
     })
-  end
+  end,
 }

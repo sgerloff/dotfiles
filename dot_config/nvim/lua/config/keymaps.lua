@@ -8,6 +8,11 @@ vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
+vim.keymap.set("n", "<leader>RR", function()
+  vim.cmd("IronFocus")
+  vim.api.nvim_feedkeys("A", "n", false)
+end, { desc = "Iron: Focus REPL" })
+
 -- Handle Wrapped-Text movement
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -60,6 +65,14 @@ M.LazyPluginKeys["lsp_on_attach"] = {
   { "<leader>cr", vim.lsp.buf.rename,                                 desc = "Rename",                     has = "rename" },
 }
 
+M.LazyPluginKeys["stevearc/conform.nvim"] = {
+  {
+    "<leader>cf",
+    function() require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 }) end,
+    mode = { "n", "v" },
+    desc = "Format Injected Langs"
+  }
+}
 ---@diagnostic disable: undefined-global
 M.LazyPluginKeys["folke/snacks.nvim"] = {
   { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
@@ -118,14 +131,14 @@ M.LazyPluginKeys["folke/snacks.nvim"] = {
   { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
   { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
   { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
-  { "<leader>ft",      function() Snacks.terminal.toggle() end,                                desc = "Toggle Terminal" },
+  { "<leader>tt",      function() Snacks.terminal.toggle() end,                                desc = "Toggle Terminal" },
   {
-    "<leader>fP",
+    "<leader>tp",
     function()
       Snacks.terminal.toggle(require("config.utils").infer_python_shell(),
         { win = { position = "right", ft = "python", min_width = 85, width = 0.4 } })
     end,
-    desc = "Toggle Terminal"
+    desc = "Toggle Python Terminal"
   }
 }
 ---@diagnostic enable: undefined-global
@@ -151,6 +164,7 @@ M.LazyPluginKeys["mfussenegger/nvim-dap"] = {
   { "<leader>du", function() require("dapui").toggle({}) end,                                           desc = "Dap UI" },
   { "<leader>de", function() require("dapui").eval() end,                                               desc = "Eval",                   mode = { "n", "v" } },
 }
+
 
 setmetatable(M.LazyPluginKeys, {
   __index = function(_, _)

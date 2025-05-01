@@ -124,14 +124,7 @@ return {
     "stevearc/conform.nvim",
     version = "^8.4.0",
     enabled = "true",
-    keys = {
-      {
-        "<leader>cF",
-        function() require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 }) end,
-        mode = { "n", "v" },
-        desc = "Format Injected Langs"
-      }
-    },
+    keys = require("config/keymaps").LazyPluginKeys["stevearc/conform.nvim"],
     config = function()
       require("conform").setup({
         default_format_opts = {
