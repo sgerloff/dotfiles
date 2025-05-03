@@ -68,7 +68,12 @@ M.LazyPluginKeys["lsp_on_attach"] = {
 M.LazyPluginKeys["stevearc/conform.nvim"] = {
   {
     "<leader>cf",
-    function() require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 }) end,
+    function() 
+      require("conform").format({ 
+        timeout_ms = 3000,
+        async = true
+      }) 
+    end,
     mode = { "n", "v" },
     desc = "Format Injected Langs"
   }

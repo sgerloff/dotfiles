@@ -45,7 +45,7 @@ M.server_opts = {
 
       )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
         fname
-      ) or require("lspconfig.util").find_git_ancestor(fname)
+      ) or vim.fs.dirname(vim.fs.find('.git', { path = startpath, upward = true })[1])
     end,
     capabilities = {
       offsetEncoding = { "utf-16" },
@@ -65,7 +65,7 @@ M.server_opts = {
       completeUnimported = true,
       clangdFileStatus = true,
     },
-  }
+  },
 }
 
 
@@ -134,6 +134,13 @@ return {
           lsp_format = "fallback", -- not recommended to change
         },
         formatters_by_ft = {
+          yaml = { "prettier" },
+          json = { "prettier" },
+          html = { "prettier" },
+          css = { "prettier" },
+          markdown = { "prettier" },
+          toml = { "prettier" },
+          sh = { "shfmt" },
         },
         formatters = {
           injected = { options = { ignore_errors = true } }
@@ -167,4 +174,18 @@ return {
       end
     end
   },
+  {
+    "nvimtools/none-ls.nvim",
+    enabled = true,
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    opts = function(_, opts)
+      local null_ls = require("null-ls")
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, null_ls.builtins.formatting.prettier)
+      table.insert(opts.sources, null_ls.builtins.formatting.shfmt)
+    end
+  }
 }
