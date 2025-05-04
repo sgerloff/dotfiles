@@ -4,13 +4,13 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	 . /etc/bashrc
+	. /etc/bashrc
 fi
 
 # Set vim mode for line editor
@@ -20,11 +20,11 @@ set -o vi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 #######################################################
@@ -37,8 +37,10 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# ensure the history is shared -- introduces significant lag probably best to do this manually
+# export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
+HISTSIZE=50000
 HISTFILESIZE=100000
 
 # check the window size after each command and, if necessary,
@@ -58,14 +60,14 @@ export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	#alias dir='dir --color=auto'
+	#alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -100,19 +102,19 @@ unset GREP_OPTIONS
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+	debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 #######################################################
 # Shellenv Brew
 #######################################################
 if [ -d "/home/linuxbrew/" ]; then
-    export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-    export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-    export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
-    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
-    export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
-    export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
+	export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+	export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+	export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+	export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}"
+	export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"
+	export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"
 fi
 
 #######################################################
@@ -125,7 +127,7 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 #######################################################
@@ -134,13 +136,13 @@ fi
 
 # Add ~/.local/ to PATH
 if [ -f "$HOME/.cargo/env" ]; then
-    export PATH=$HOME/.local/bin:$PATH
-    . "$HOME/.cargo/env"
+	export PATH=$HOME/.local/bin:$PATH
+	. "$HOME/.cargo/env"
 fi
 
 # Created by `pipx` on 2024-01-04 13:38:55
 if [ -f "$HOME/.gyg" ]; then
-    export PATH="$PATH:/home/sgerloff/.gyg/bin"
+	export PATH="$PATH:/home/sgerloff/.gyg/bin"
 fi
 
 #######################################################
@@ -148,44 +150,43 @@ fi
 #######################################################
 
 if [ -x "$(command -v starship)" ]; then
-    eval "$(starship init bash)"
+	eval "$(starship init bash)"
 else
-    # set a fancy prompt (non-color, unless we know we "want" color)
-    case "$TERM" in
-        xterm-color|*-256color) color_prompt=yes;;
-    esac
+	# set a fancy prompt (non-color, unless we know we "want" color)
+	case "$TERM" in
+	xterm-color | *-256color) color_prompt=yes ;;
+	esac
 
-    # uncomment for a colored prompt, if the terminal has the capability; turned
-    # off by default to not distract the user: the focus in a terminal window
-    # should be on the output of commands, not on the prompt
-    #force_color_prompt=yes
+	# uncomment for a colored prompt, if the terminal has the capability; turned
+	# off by default to not distract the user: the focus in a terminal window
+	# should be on the output of commands, not on the prompt
+	#force_color_prompt=yes
 
-    if [ -n "$force_color_prompt" ]; then
-        if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-        else
-        color_prompt=
-        fi
-    fi
+	if [ -n "$force_color_prompt" ]; then
+		if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+			# We have color support; assume it's compliant with Ecma-48
+			# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+			# a case would tend to support setf rather than setaf.)
+			color_prompt=yes
+		else
+			color_prompt=
+		fi
+	fi
 
-    if [ "$color_prompt" = yes ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    fi
-    unset color_prompt force_color_prompt
+	if [ "$color_prompt" = yes ]; then
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+	else
+		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	fi
+	unset color_prompt force_color_prompt
 
-    # If this is an xterm set the title to user@host:dir
-    case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-    esac
+	# If this is an xterm set the title to user@host:dir
+	case "$TERM" in
+	xterm* | rxvt*)
+		PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+		;;
+	*) ;;
+	esac
 fi
 
 #######################################################
@@ -193,21 +194,21 @@ fi
 #######################################################
 
 if [ -f ~/.config/broot/launcher/bash/br ]; then
-    source ~/.config/broot/launcher/bash/br
+	source ~/.config/broot/launcher/bash/br
 fi
 
 #######################################################
 # Read Secret Envs
 #######################################################
 if [ -f $HOME/.env.secrets ]; then
-    source $HOME/.env.secrets
+	source $HOME/.env.secrets
 fi
 
 #######################################################
 # Device specific bash settings
 #######################################################
 if [ -f $HOME/.bashrc_system ]; then
-    source $HOME/.bashrc_system
+	source $HOME/.bashrc_system
 fi
 
 #######################################################
@@ -215,14 +216,14 @@ fi
 #######################################################
 
 if [ -x "$(command -v nvim)" ]; then
-    export EDITOR=nvim
-    export VISUAL=nvim
+	export EDITOR=nvim
+	export VISUAL=nvim
 elif [ -x "$(command -v vim)" ]; then
-    export EDITOR=vim
-    export VISUAL=vim
+	export EDITOR=vim
+	export VISUAL=vim
 else
-    export EDITOR=nano
-    export VISUAL=nano
+	export EDITOR=nano
+	export VISUAL=nano
 fi
 
 #######################################################
@@ -232,9 +233,9 @@ fi
 CHEAT_SHEET_DIR="$HOME/bin"
 CHEAT_SHEET_FILE="$CHEAT_SHEET_DIR/cht.sh"
 if [ ! -f $CHEAT_SHEET_FILE ]; then
-    mkdir -p $CHEAT_SHEET_DIR
-    curl https://cht.sh/:cht.sh > $CHEAT_SHEET_FILE
-    chmod a+x $CHEAT_SHEET_FILE
+	mkdir -p $CHEAT_SHEET_DIR
+	curl https://cht.sh/:cht.sh >$CHEAT_SHEET_FILE
+	chmod a+x $CHEAT_SHEET_FILE
 fi
 
 #######################################################
@@ -242,39 +243,39 @@ fi
 #######################################################
 
 if [ -x "$(command -v fzf)" ]; then
-    eval "$(fzf --bash)"
-    export FZF_DEFUALT_OPTS="--height 60% --border --layout=reverse"
-    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-    source ~/.scripts/fzf-git.sh
+	eval "$(fzf --bash)"
+	export FZF_DEFUALT_OPTS="--height 60% --border --layout=reverse"
+	export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+	export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+	source ~/.scripts/fzf-git.sh
 
-    if [ -x "$(command -v bat)" ]; then
-        export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-    fi
-    if [ -x "$(command -v eza)" ]; then
-        export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-    fi
+	if [ -x "$(command -v bat)" ]; then
+		export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+	fi
+	if [ -x "$(command -v eza)" ]; then
+		export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+	fi
 fi
 
 _fzf_comprun() {
-    local command=$1
-    shift
+	local command=$1
+	shift
 
-    case "$command" in 
-        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-        export|unset) fzf --preview "eval 'echo \$' {}" "$@" ;;
-        ssh)          fzf --preview 'dig {}' "$@" ;;
-        *)            fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
-    esac
+	case "$command" in
+	cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+	export | unset) fzf --preview "eval 'echo \$' {}" "$@" ;;
+	ssh) fzf --preview 'dig {}' "$@" ;;
+	*) fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
+	esac
 }
 
 _fzf_compgen_path() {
-    fd --hidden --exclude .git . "$1"
+	fd --hidden --exclude .git . "$1"
 }
 
 _fzf_compget_dir() {
-    fd --type=d --hidden --exclude .git . "$1"
+	fd --type=d --hidden --exclude .git . "$1"
 }
 
 #######################################################
@@ -282,21 +283,21 @@ _fzf_compget_dir() {
 # #####################################################
 
 if [ -x "$(command -v pyenv)" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
 fi
 
 #######################################################
 # Setup Python
 # #####################################################
 
-export PIP_REQUIRE_VIRTUALENV=true  # Avoid installing to global environment
+export PIP_REQUIRE_VIRTUALENV=true # Avoid installing to global environment
 
 #######################################################
 # direnv
 # #####################################################
 
 if [ -x "$(command -v direnv)" ]; then
-  eval "$(direnv hook bash)"
+	eval "$(direnv hook bash)"
 fi
