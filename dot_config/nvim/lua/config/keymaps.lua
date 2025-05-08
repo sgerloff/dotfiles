@@ -13,6 +13,9 @@ vim.keymap.set("n", "<leader>RR", function()
   vim.api.nvim_feedkeys("A", "n", false)
 end, { desc = "Iron: Focus REPL" })
 
+-- Diagnostics
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
 -- Handle Wrapped-Text movement
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -68,11 +71,11 @@ M.LazyPluginKeys["lsp_on_attach"] = {
 M.LazyPluginKeys["stevearc/conform.nvim"] = {
   {
     "<leader>cf",
-    function() 
-      require("conform").format({ 
+    function()
+      require("conform").format({
         timeout_ms = 3000,
         async = true
-      }) 
+      })
     end,
     mode = { "n", "v" },
     desc = "Format Injected Langs"

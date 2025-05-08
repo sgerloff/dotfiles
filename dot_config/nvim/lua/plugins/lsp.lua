@@ -19,7 +19,11 @@ M.server_opts = {
         pythonPath = require("config.utils").get_python_path()
       }
     end,
-    settings = {}
+    settings = {
+      basedpyright = {
+        typeCheckingMode = "recommended"
+      }
+    }
   },
   ["ruff"] = {
     on_init = function(client)
