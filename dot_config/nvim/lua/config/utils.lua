@@ -84,4 +84,28 @@ function M.launch_debug_python_shell(pid)
   )
 end
 
+M.__scratch_win = nil
+
+function M.toggle_scratch_win()
+  if M.__scratch_win and M.__scratch_win:valid() then
+    M.__scratch_win:toggle()
+  else
+    M.__scratch_win = require("snacks").win({
+      scratch_ft = "markdown",
+      position = "left",
+      width = 0.15,
+      height = 1,
+      fixbuf = true,
+      enter = false,
+      minimal = true,
+      wo = {
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
+        wrap = false,
+      }
+    })
+  end
+end
+
 return M

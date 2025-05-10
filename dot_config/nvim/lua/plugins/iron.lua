@@ -13,7 +13,7 @@ return {
           python = {
             command = function()
               python_path = require("config.utils").infer_python_shell()
-              return { python_path, "--no-autoindent" }
+              return { "bash", "-c", "ASDF=asdf " .. python_path .. " --no-autoindent" }
             end,
             format = common.bracketed_paste_python,
             block_dividers = { "# %%", "#%%", "# COMMAND", "#COMMAND" }

@@ -7,7 +7,19 @@ return {
     opts = {
       picker = {},
       explorer = {},
-      statuscolumn = { enabled = false }
+      statuscolumn = { enabled = false },
+      zen = {
+        toggles = {
+          dim = false,
+        },
+        win = {
+          width = 160
+        },
+        show = {
+          statusline = true,
+          tabline = true
+        },
+      }
     }
   }
 }

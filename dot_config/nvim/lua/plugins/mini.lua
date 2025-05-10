@@ -23,6 +23,7 @@ return {
       require("mini.comment").setup({})
       require("mini.pairs").setup({})
       require("mini.move").setup({})
+      require("mini.misc").setup({})
       require("mini.operators").setup({})
       require("mini.splitjoin").setup({})
       require("mini.surround").setup({
@@ -36,6 +37,12 @@ return {
         snippets = {
           gen_loader.from_lang(),
         },
+        mappings={
+          expand = "<C-j>",
+          jump_next = "<C-l>",
+          jump_prev = "<C-h>",
+          stop = "<C-c>"
+        }
       })
     end
   }
