@@ -1,0 +1,37 @@
+!# /bin/bash
+
+brew install starship
+brew install direnv
+brew install dust
+brew install fzf
+brew install nvim
+brew install ripgrep
+brew install sd
+brew install tealdeer
+brew install fd
+
+brew install bat
+bat cache --build
+brew install git-delta
+
+brew install bottom
+brew install eza
+brew install thefuck
+
+brew install tmux
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+brew install pyenv
+brew install pipx
+
+# Download JetbrainsMono Nerdfont
+FONTS_DIR=$HOME/.local/share/fonts
+mkdir -p $FONTS_DIR
+wget -P $FONTS_DIR https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+cd $FONTS_DIR
+unzip JetBrainsMono.zip
+rm JetBrainsMono.zip
+fc-cache -fv
+

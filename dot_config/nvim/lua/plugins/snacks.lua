@@ -3,6 +3,8 @@ return {
     "folke/snacks.nvim",
     version = "^2.20.0",
     enabled = true,
+    lazy = false,
+    priority = 1000,
     keys = require("config/keymaps").LazyPluginKeys["folke/snacks.nvim"],
     opts = {
       picker = {},

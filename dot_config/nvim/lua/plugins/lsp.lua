@@ -1,5 +1,5 @@
 local M = {}
-M.servers = { "lua_ls", "basedpyright", "ruff", "clangd", "bash-language-server" }
+M.servers = { "lua_ls", "basedpyright", "ruff", "clangd", "bashls" }
 M.server_opts = {
   ["lua_ls"] = {
     settings = {

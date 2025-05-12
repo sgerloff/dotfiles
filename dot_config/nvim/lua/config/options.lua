@@ -4,6 +4,7 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.python3_host_prog = "$HOME/.local/share/nvim_venv/bin/python3"
 
 vim.opt.clipboard = "unnamedplus"
 
