@@ -21,11 +21,11 @@ return {
         },
         preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
         mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-o>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-n>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-f>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-b>"] = cmp.mapping.scroll_docs(4),
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-l>"] = cmp.mapping.confirm({ select = true }),
           ["<C-CR>"] = function(fallback)
             cmp.abort()
             fallback()
