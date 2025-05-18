@@ -1,3 +1,7 @@
+c.TerminalInteractiveShell.editing_mode = "vi"
+c.TerminalInteractiveShell.editor = "nvim"
+c.TerminalInteractiveShell.true_color = True
+c.TerminalInteractiveShell.highlighting_style = "catppuccin-mocha"
 c.TerminalInteractiveShell.shortcuts = [
     {
         "command": "IPython:auto_suggest.accept_or_jump_to_end",
@@ -5,13 +9,8 @@ c.TerminalInteractiveShell.shortcuts = [
         "create": True,
     },
     {
-        "command": "IPython:auto_suggest.down_and_update_hint",
-        "new_keys": ["c-j"],
-        "create": True,
-    },
-    {
-        "command": "IPython:auto_suggest.up_and_update_hint",
-        "new_keys": ["c-k"],
+        "command": "IPython:shortcuts.open_input_in_editor",
+        "new_keys": ["c-x"],
         "create": True,
     },
 ]

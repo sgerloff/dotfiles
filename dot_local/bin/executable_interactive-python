@@ -1,4 +1,4 @@
 #! /bin/bash
 
 uv pip freeze > /tmp/requirements.txt
-uv pip install -c /tmp/requirements.txt debugpy ipython matplotlib plotly rich ipykernel
+uv pip install -c /tmp/requirements.txt debugpy ipython matplotlib plotly rich ipykernel catppuccin
