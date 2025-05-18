@@ -37,7 +37,32 @@ return {
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
-    opts = {},
+    opts = {
+      layouts = {
+        {
+          elements = {
+            {
+              id ="scopes",
+              size = 0.2
+            },
+            {
+              id ="watches",
+              size = 0.2
+            },
+            {
+              id = "console",
+              size = 0.4
+            },
+            {
+              id ="stacks",
+              size = 0.2
+            },
+          },
+          position = "bottom",
+          size = 15
+        },
+      }
+    },
     config = function(_, opts)
       local dap = require("dap")
       local dapui = require("dapui")
@@ -77,7 +102,10 @@ return {
     end,
     config = function()
       require("mason-nvim-dap").setup()
-      require("dap-python").setup("uv")
+
+      local dap_python = require("dap-python")
+      dap_python.setup("uv")
+      dap_python.test_runner = "pytest"
 
       local dap = require("dap")
 
@@ -93,6 +121,20 @@ return {
       dap.adapters.nlua = function(callback, config)
         callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
       end
+
+      table.insert(dap.configurations.python, {
+        type = "python",
+        request = "launch",
+        name = "Pytest",
+        module = "pytest",
+        justMyCode = false,
+        subProcess = true,
+        console = "integratedTerminal",
+        args = function()
+          local input = vim.fn.input("pytest ")
+          return vim.fn.split(input, " ")
+        end,
+      })
 
       -- Python Terminal
       -- dap.adapters.python_terminal = dap.adapters.python

@@ -108,4 +108,15 @@ function M.toggle_scratch_win()
   end
 end
 
+function M.dapui_float_element(element_id, size)
+  local width = math.floor(vim.o.columns * size)
+  local height = math.floor(vim.o.lines * size)
+  require("dapui").float_element(element_id, {
+    width = width,
+    height = height,
+    enter = true,
+    position = "center"
+  })
+end
+
 return M
