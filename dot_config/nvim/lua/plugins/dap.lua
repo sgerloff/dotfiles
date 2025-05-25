@@ -104,7 +104,7 @@ return {
       require("mason-nvim-dap").setup()
 
       local dap_python = require("dap-python")
-      dap_python.setup("uv")
+      dap_python.setup(require("config.utils").get_python_path())
       dap_python.test_runner = "pytest"
 
       local dap = require("dap")
