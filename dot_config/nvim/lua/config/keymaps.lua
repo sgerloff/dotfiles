@@ -30,24 +30,11 @@ vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Do
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Down", expr = true, silent = true })
 
--- Navigate Windows
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 vim.keymap.set("n", "<leader>wb", "<C-w>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Window Right", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete Window", remap = true })
 
-vim.keymap.set("n", "<leader>wk", require("config.utils").dot_repeat(function() vim.cmd("resize +2") end),
-  { desc = "Increase Window Height", expr = true, silent = true })
-vim.keymap.set("n", "<leader>wj", require("config.utils").dot_repeat(function() vim.cmd("resize -2") end),
-  { desc = "Decrease Window Height", expr = true, silent = true })
-vim.keymap.set("n", "<leader>wh", require("config.utils").dot_repeat(function() vim.cmd("vertical resize -2") end),
-  { desc = "Decrease Window Width", expr = true, silent = true })
-vim.keymap.set("n", "<leader>wl", require("config.utils").dot_repeat(function() vim.cmd("vertical resize +2") end),
-  { desc = "Increase Window Width", expr = true, silent = true })
 
 -- Undo breakpoint for better undo (e.g. undo until the last ',')
 vim.keymap.set("i", ",", ",<c-g>u")
@@ -193,6 +180,24 @@ M.LazyPluginKeys["mfussenegger/nvim-dap"] = {
   { "<leader>dw", function() require("config.utils").dapui_float_element("watches", 0.7) end,           desc = "Watches (Floating)" },
 }
 
+M.LazyPluginKeys["mrjones2014/smart-splits.nvim"] = {
+  { "<C-h>",      function() require("smart-splits").move_cursor_left() end,  desc = "Move left pane",      mode = { "n" } },
+  { "<C-j>",      function() require("smart-splits").move_cursor_down() end,  desc = "Move down pane",      mode = { "n" } },
+  { "<C-k>",      function() require("smart-splits").move_cursor_up() end,    desc = "Move up pane",        mode = { "n" } },
+  { "<C-l>",      function() require("smart-splits").move_cursor_right() end, desc = "Move right pane",     mode = { "n" } },
+  { "<C-S-h>",    function() require("smart-splits").move_cursor_left() end,  desc = "Move left pane",      mode = { "n" } },
+  { "<C-S-j>",    function() require("smart-splits").move_cursor_down() end,  desc = "Move down pane",      mode = { "n" } },
+  { "<C-S-k>",    function() require("smart-splits").move_cursor_up() end,    desc = "Move up pane",        mode = { "n" } },
+  { "<C-S-l>",    function() require("smart-splits").move_cursor_right() end, desc = "Move right pane",     mode = { "n" } },
+  { "<A-h>",      function() require("smart-splits").resize_left() end,       desc = "Resize pane left",    mode = { "n" } },
+  { "<A-j>",      function() require("smart-splits").resize_down() end,       desc = "Resize pane down",    mode = { "n" } },
+  { "<A-k>",      function() require("smart-splits").resize_up() end,         desc = "Resize pane up",      mode = { "n" } },
+  { "<A-l>",      function() require("smart-splits").resize_right() end,      desc = "Resize pane right",   mode = { "n" } },
+  { "<leader>wh", function() require("smart-splits").swap_buf_left() end,     desc = "Swap buffer to left", mode = { "n" } },
+  { "<leader>wj", function() require("smart-splits").swap_buf_down() end,     desc = "Swap buffer to left", mode = { "n" } },
+  { "<leader>wk", function() require("smart-splits").swap_buf_up() end,       desc = "Swap buffer to left", mode = { "n" } },
+  { "<leader>wl", function() require("smart-splits").swap_buf_right() end,    desc = "Swap buffer to left", mode = { "n" } },
+}
 
 setmetatable(M.LazyPluginKeys, {
   __index = function(_, _)
