@@ -63,8 +63,8 @@ config.keys = {
       function(win, pane)
         resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
           local type = string.match(id, "^([^/]+)") -- match before '/'
-          id = string.match(id, "([^/]+)$") -- match after '/'
-          id = string.match(id, "(.+)%..+$") -- remove file extention
+          id = string.match(id, "([^/]+)$")         -- match after '/'
+          id = string.match(id, "(.+)%..+$")        -- remove file extention
           local opts = {
             relative = true,
             restore_text = true,
@@ -83,6 +83,45 @@ config.keys = {
         end)
       end
     )
+  },
+  {
+    key = "e",
+    mods = "LEADER",
+    action = wezterm.action.PromptInputLine({
+      description = "Enter new name for tab:",
+      action = wezterm.action_callback(
+        function(window, pane, line)
+          if line then
+            window:active_tab():set_title(line)
+          end
+        end
+      )
+    })
+  },
+  {
+    key = "w",
+    mods = "LEADER",
+    action = wezterm.action.PromptInputLine({
+      description = "Enter new name for workspace:",
+      action = wezterm.action_callback(
+        function(window, pane, line)
+          if line then
+            window:perform_action(
+              wezterm.action.SwitchWorkspace({
+                name = line,
+              }),
+              pane
+            )
+            window:active_tab():set_title(line)
+          end
+        end
+      )
+    })
+  },
+  {
+    key = "w",
+    mods = "LEADER|CTRL",
+    action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" })
   },
   -- PANE CONTROLS
   {
