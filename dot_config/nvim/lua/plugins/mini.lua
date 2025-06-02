@@ -8,7 +8,8 @@ return {
     version = "^0.15.0",
     enabled = true,
     dependencies = {
-      "rafamadriz/friendly-snippets"
+      "rafamadriz/friendly-snippets",
+      "nvim-treesitter/nvim-treesitter-textobjects"
     },
     config = function()
       require("mini.statusline").setup({
@@ -16,7 +17,21 @@ return {
       })
 
       require("mini.ai").setup({
-        custom_textobjects = nil,
+        custom_textobjects = {
+          F = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+          o = require("mini.ai").gen_spec.treesitter({
+            a = { "@loop.outer", "@conditional.outer" },
+            i = { "@loop.inner", "@conditional.inner" },
+          }),
+          c = require("mini.ai").gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),
+          C = require("mini.ai").gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }),
+          s = require("mini.ai").gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.rhs" }),
+          S = require("mini.ai").gen_spec.treesitter({ a = "@assignment.inner", i = "@assignment.lhs" }),
+        },
+        mappings = {
+          goto_left = "ga",
+          goto_right = "gA"
+        },
         n_lines = 100,
       })
 
@@ -37,7 +52,7 @@ return {
         snippets = {
           gen_loader.from_lang(),
         },
-        mappings={
+        mappings = {
           expand = "<C-c>",
           jump_next = "<C-n>",
           jump_prev = "<C-p>",

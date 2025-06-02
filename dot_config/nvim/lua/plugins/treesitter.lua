@@ -3,6 +3,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = "^0.9.3",
     enabled = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects"
+    },
     build = ":TSUpdate",
     config = function()
       require 'nvim-treesitter.configs'.setup {
@@ -36,5 +39,5 @@ return {
         },
       }
     end
-  }
+  },
 }
