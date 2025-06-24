@@ -21,7 +21,8 @@ M.server_opts = {
     end,
     settings = {
       basedpyright = {
-        typeCheckingMode = "recommended"
+        typeCheckingMode = "recommended",
+        -- ignore = { "**/site-packages" }
       }
     }
   },
