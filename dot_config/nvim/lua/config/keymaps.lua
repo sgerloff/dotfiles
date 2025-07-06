@@ -47,6 +47,18 @@ vim.keymap.set("v", ">", ">gv")
 
 vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { noremap = true, silent = true })
 
+-- Quickfix
+vim.keymap.set("n", "<leader>qq", vim.cmd.cnext, { desc = "Quickfix: go next" })
+vim.keymap.set("n", "<leader>qQ", vim.cmd.cprev, { desc = "Quickfix: go previous" })
+vim.keymap.set("n", "<leader>ql", vim.cmd.copen, { desc = "Quickfix: open list" })
+vim.keymap.set("n", "<leader>qL", vim.cmd.cclose, { desc = "Quickfix: close list" })
+vim.keymap.set("n", "<leader>qgg", vim.cmd.cfirst, { desc = "Quickfix: go first" })
+vim.keymap.set("n", "<leader>qG", vim.cmd.clast, { desc = "Quickfix: go last" })
+vim.keymap.set("n", "<leader>qR", function() vim.fn.setqflist({}, "r") end, { desc = "Quickfix: reset list" })
+vim.keymap.set("n", "<leader>qdd", function() vim.cmd("QfDiagnostics") end, { desc = "Quickfix: diagnostic list" })
+vim.keymap.set("n", "<leader>qdw", function() vim.cmd("QfDiagnosticsW") end, { desc = "Quickfix: diagnostic list" })
+vim.keymap.set("n", "<leader>qde", function() vim.cmd("QfDiagnosticsE") end, { desc = "Quickfix: diagnostic list" })
+
 -- PLUGIN KEYS
 local M = {}
 
