@@ -59,6 +59,9 @@ vim.keymap.set("n", "<leader>qdd", function() vim.cmd("QfDiagnostics") end, { de
 vim.keymap.set("n", "<leader>qdw", function() vim.cmd("QfDiagnosticsW") end, { desc = "Quickfix: diagnostic list" })
 vim.keymap.set("n", "<leader>qde", function() vim.cmd("QfDiagnosticsE") end, { desc = "Quickfix: diagnostic list" })
 
+-- Buffer
+vim.keymap.set("n", "<leader>bb", function() vim.cmd("bufdo e") end, { desc = "Buffer: reload all" })
+
 -- PLUGIN KEYS
 local M = {}
 
