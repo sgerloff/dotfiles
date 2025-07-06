@@ -9,3 +9,15 @@ vim.api.nvim_create_user_command(
   end,
   {}
 )
+
+vim.api.nvim_create_user_command("QfDiagnostics", function()
+  vim.diagnostic.setqflist()
+end, {})
+
+vim.api.nvim_create_user_command("QfDiagnosticsW", function()
+  vim.diagnostic.setqflist({ severtiy = vim.diagnostic.severity.WARN })
+end, {})
+
+vim.api.nvim_create_user_command("QfDiagnosticsE", function()
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+end, {})
