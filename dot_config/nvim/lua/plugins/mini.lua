@@ -45,7 +45,6 @@ return {
         n_lines = 100,
         serch_method = "cover"
       })
-      require("mini.jump").setup({})
 
       local gen_loader = require("mini.snippets").gen_loader
       require("mini.snippets").setup({

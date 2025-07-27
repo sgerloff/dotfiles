@@ -1,7 +1,7 @@
 return {
   {
     "miversen33/sunglasses.nvim",
-    enabled = true,
+    enabled = false,
     config = {
       filter_type = "SHADE",
       filter_percent = .10
