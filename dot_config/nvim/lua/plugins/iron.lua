@@ -20,21 +20,26 @@ return {
           }
         },
         repl_filetype = function(bufnr, ft)
-          return ft
+          local supported_ft = {"python"}
+          if supported_ft[ft] ~= nil then
+            return ft
+          else
+            return "python"
+          end
         end,
         repl_open_cmd = view.right(80),
       },
       keymaps = {
-        toggle_repl = "<leader>rr", -- toggles the repl open and closed.
-        restart_repl = "<leader>rR", -- calls `IronRestart` to restart the repl
-        send_motion = "<leader>rc",
-        visual_send = "<leader>rc",
+        toggle_repl = "<leader>rt", -- toggles the repl open and closed.
+        restart_repl = "<leader>rT", -- calls `IronRestart` to restart the repl
+        send_motion = "<leader>rr",
+        visual_send = "<leader>rr",
         send_file = "<leader>rf",
-        send_line = "<leader>rl",
-        send_paragraph = "<leader>rp",
+        send_line = "<leader>RR",
+        send_paragraph = "<leader>rR",
         send_until_cursor = "<leader>ru",
-        send_mark = "<leader>rm",
-        send_code_block = "<leader>rb",
+        send_mark = "<leader>mm",
+        send_code_block = "<leader>rr",
         send_code_block_and_move = "<leader>rn",
         mark_motion = "<leader>mc",
         mark_visual = "<leader>mc",
@@ -42,7 +47,7 @@ return {
         cr = "<leader>r<cr>",
         interrupt = "<leader>r<leader>",
         exit = "<leader>rq",
-        clear = "<leader>Rr",
+        clear = "<leader>Rt",
       },
       highlight = {
         italic = true

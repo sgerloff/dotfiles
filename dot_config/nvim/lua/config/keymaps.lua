@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
-vim.keymap.set("n", "<leader>RR", function()
+vim.keymap.set("n", "<leader>RT", function()
   vim.cmd("IronFocus")
   vim.api.nvim_feedkeys("A", "n", false)
 end, { desc = "Iron: Focus REPL" })
@@ -34,6 +34,7 @@ vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Down
 vim.keymap.set("n", "<leader>wb", "<C-w>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Window Right", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete Window", remap = true })
+vim.keymap.set("n", "<leader>ww", "<cmd>write all<CR>", { desc = "Write All", remap = true })
 
 
 -- Undo breakpoint for better undo (e.g. undo until the last ',')
