@@ -17,6 +17,10 @@ config.window_padding = {
 if wezterm.target_triple:find("windows") then
   config.default_domain = "WSL:Ubuntu"
 end
+if wezterm.target_triple:find("apple") then
+  config.default_prog = { "/opt/homebrew/bin/bash", "-l" }
+  config.font_size = 14.0
+end
 config.window_decorations = "RESIZE"
 
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
