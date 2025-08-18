@@ -31,6 +31,7 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -42,6 +43,10 @@ automatically-unhide-macos-hidden-apps = false
 [key-mapping]
     preset = 'qwerty'
 
+[key-mapping.key-notation-to-key-code]
+  pplus = "rightSquareBracket"
+  mminus = "slash"
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -51,12 +56,13 @@ automatically-unhide-macos-hidden-apps = false
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 1
-    inner.vertical =   1
-    outer.left =       1
-    outer.bottom =     1
-    outer.top =        1
-    outer.right =      1
+    inner.horizontal = 0
+    inner.vertical =   0
+    outer.left =       0
+    outer.bottom =     0
+    outer.top =        0
+    outer.right =      0
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -102,112 +108,94 @@ automatically-unhide-macos-hidden-apps = false
     cmd-l = 'focus right --boundaries all-monitors-outer-frame'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
-    ctrl-cmd-left = 'move left --boundaries all-monitors-outer-frame'
-    ctrl-cmd-down = 'move down --boundaries all-monitors-outer-frame'
-    ctrl-cmd-up = 'move up --boundaries all-monitors-outer-frame'
-    ctrl-cmd-right = 'move right --boundaries all-monitors-outer-frame'
+    ctrl-cmd-h = 'move left --boundaries all-monitors-outer-frame'
+    ctrl-cmd-j = 'move down --boundaries all-monitors-outer-frame'
+    ctrl-cmd-k = 'move up --boundaries all-monitors-outer-frame'
+    ctrl-cmd-l = 'move right --boundaries all-monitors-outer-frame'
 
-    cmd-left = 'join-with left'
-    cmd-down = 'join-with down'
-    cmd-up = 'join-with up'
-    cmd-right = 'join-with right'
-
-    cmd-pageUp = 'fullscreen'
-    cmd-pageDown = 'layout floating tiling'
+    ctrl-cmd-up = 'fullscreen'
+    ctrl-cmd-down = 'layout floating tiling'
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    cmd-minus = 'resize smart -50'
-    cmd-equal = 'resize smart +50'
+    ctrl-cmd-mminus = 'resize smart -50'
+    ctrl-cmd-pplus = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    cmd-1 = 'workspace 1'
-    cmd-2 = 'workspace 2'
-    cmd-3 = 'workspace 3'
-    cmd-4 = 'workspace 4'
-    cmd-5 = 'workspace 5'
-    cmd-6 = 'workspace 6'
-    cmd-7 = 'workspace 7'
-    cmd-8 = 'workspace 8'
-    cmd-9 = 'workspace 9'
-    cmd-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
-    cmd-b = 'workspace B'
-    cmd-c = 'workspace C'
-    cmd-d = 'workspace D'
-    cmd-e = 'workspace E'
-    cmd-f = 'workspace F'
-    cmd-g = 'workspace G'
-    cmd-i = 'workspace I'
-    cmd-m = 'workspace M'
-    cmd-n = 'workspace N'
-    cmd-o = 'workspace O'
-    cmd-p = 'workspace P'
-    cmd-q = 'workspace Q'
-    cmd-r = 'workspace R'
-    cmd-s = 'workspace S'
-    cmd-t = 'workspace T'
-    cmd-u = 'workspace U'
-    cmd-v = 'workspace V'
-    cmd-w = 'workspace W'
-    cmd-x = 'workspace X'
-    cmd-y = 'workspace Y'
-    cmd-z = 'workspace Z'
+    ctrl-cmd-1 = 'workspace 1'
+    ctrl-cmd-2 = 'workspace 2'
+    ctrl-cmd-3 = 'workspace 3'
+    ctrl-cmd-4 = 'workspace 4'
+    ctrl-cmd-5 = 'workspace 5'
+    ctrl-cmd-6 = 'workspace 6'
+    ctrl-cmd-7 = 'workspace 7'
+    ctrl-cmd-8 = 'workspace 8'
+    ctrl-cmd-9 = 'workspace 9'
+    ctrl-cmd-0 = 'workspace 10'
+    ctrl-cmd-m = "exec-and-forget ~/.local/bin/aerospace_open_if_empty m_Messanger \"open -na '/Applications/Slack.app'\""
+    ctrl-cmd-n = "exec-and-forget ~/.local/bin/aerospace_open_if_empty n_Notes \"open -na '/Applications/Obsidian.app' 'obsidian://new?vault=GYG&file=$(date +%F).md'\""
+    ctrl-cmd-y = "exec-and-forget ~/.local/bin/aerospace_open_if_empty z_Browser \"open -na '/Applications/Google Chrome.app'\""
+    ctrl-cmd-i = "exec-and-forget ~/.local/bin/aerospace_open_if_empty i_Databricks \"open -na '/Applications/Google Chrome.app' --args --new-window https://dbc-d10db17d-b6c4.cloud.databricks.com\""
+    ctrl-cmd-u = "exec-and-forget ~/.local/bin/aerospace_open_if_empty u_Terminal \"open -na '/Applications/WezTerm.app'\""
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    ctrl-cmd-1 = 'move-node-to-workspace 1'
-    ctrl-cmd-2 = 'move-node-to-workspace 2'
-    ctrl-cmd-3 = 'move-node-to-workspace 3'
-    ctrl-cmd-4 = 'move-node-to-workspace 4'
-    ctrl-cmd-5 = 'move-node-to-workspace 5'
-    ctrl-cmd-6 = 'move-node-to-workspace 6'
-    ctrl-cmd-7 = 'move-node-to-workspace 7'
-    ctrl-cmd-8 = 'move-node-to-workspace 8'
-    ctrl-cmd-9 = 'move-node-to-workspace 9'
-    ctrl-cmd-a = 'move-node-to-workspace A'
-    ctrl-cmd-b = 'move-node-to-workspace B'
-    ctrl-cmd-c = 'move-node-to-workspace C'
-    ctrl-cmd-d = 'move-node-to-workspace D'
-    ctrl-cmd-e = 'move-node-to-workspace E'
-    ctrl-cmd-f = 'move-node-to-workspace F'
-    ctrl-cmd-g = 'move-node-to-workspace G'
-    ctrl-cmd-i = 'move-node-to-workspace I'
-    ctrl-cmd-m = 'move-node-to-workspace M'
-    ctrl-cmd-n = 'move-node-to-workspace N'
-    ctrl-cmd-o = 'move-node-to-workspace O'
-    ctrl-cmd-p = 'move-node-to-workspace P'
-    ctrl-cmd-q = 'move-node-to-workspace Q'
-    ctrl-cmd-r = 'move-node-to-workspace R'
-    ctrl-cmd-s = 'move-node-to-workspace S'
-    ctrl-cmd-t = 'move-node-to-workspace T'
-    ctrl-cmd-u = 'move-node-to-workspace U'
-    ctrl-cmd-v = 'move-node-to-workspace V'
-    ctrl-cmd-w = 'move-node-to-workspace W'
-    ctrl-cmd-x = 'move-node-to-workspace X'
-    ctrl-cmd-y = 'move-node-to-workspace Y'
-    ctrl-cmd-z = 'move-node-to-workspace Z'
+
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    cmd-tab = 'workspace-back-and-forth'
+    # cmd-tab = 'workspace-back-and-forth'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
     ctrl-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-    cmd-semicolon = 'mode service'
+    ctrl-cmd-space = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
-    r = ['flatten-workspace-tree', 'mode main'] # reset layout
-    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    cmd-r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    cmd-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
+
+    left = ['join-with left', 'mode main']
+    down = ['join-with down', 'mode main']
+    up = ['join-with up', 'mode main']
+    right = ['join-with right', 'mode main']
 
     # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
     #s = ['layout sticky tiling', 'mode main']
 
-    alt-shift-h = ['join-with left', 'mode main']
-    alt-shift-j = ['join-with down', 'mode main']
-    alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    ctrl-1 = ['move-node-to-workspace 1', 'workspace 1', 'mode main']
+    ctrl-2 = ['move-node-to-workspace 2', 'workspace 2', 'mode main']
+    ctrl-3 = ['move-node-to-workspace 3', 'workspace 3', 'mode main']
+    ctrl-4 = ['move-node-to-workspace 4', 'workspace 4', 'mode main']
+    ctrl-5 = ['move-node-to-workspace 5', 'workspace 5', 'mode main']
+    ctrl-6 = ['move-node-to-workspace 6', 'workspace 6', 'mode main']
+    ctrl-7 = ['move-node-to-workspace 7', 'workspace 7', 'mode main']
+    ctrl-8 = ['move-node-to-workspace 8', 'workspace 8', 'mode main']
+    ctrl-9 = ['move-node-to-workspace 9', 'workspace 9', 'mode main']
+    ctrl-0 = ['move-node-to-workspace 10', 'workspace 10', 'mode main']
+    ctrl-m = ['move-node-to-workspace m_Messanger', 'workspace m_Messanger', 'mode main']
+    ctrl-n = ['move-node-to-workspace n_Notes', 'workspace n_Notes', 'mode main']
+    ctrl-y = ['move-node-to-workspace z_Browser', 'workspace z_Browser', 'mode main']
+    ctrl-i = ['move-node-to-workspace i_Databricks', 'workspace i_Databricks', 'mode main']
+    ctrl-u = ['move-node-to-workspace u_Terminal', 'workspace u_Terminal', 'mode main']
 
-    down = 'volume down'
-    up = 'volume up'
-    shift-down = ['volume set 0', 'mode main']
+
+    1 = ['move-node-to-workspace 1', 'mode main']
+    2 = ['move-node-to-workspace 2', 'mode main']
+    3 = ['move-node-to-workspace 3', 'mode main']
+    4 = ['move-node-to-workspace 4', 'mode main']
+    5 = ['move-node-to-workspace 5', 'mode main']
+    6 = ['move-node-to-workspace 6', 'mode main']
+    7 = ['move-node-to-workspace 7', 'mode main']
+    8 = ['move-node-to-workspace 8', 'mode main']
+    9 = ['move-node-to-workspace 9', 'mode main']
+    0 = ['move-node-to-workspace 10', 'mode main']
+    m = ['move-node-to-workspace m_Messanger', 'mode main']
+    n = ['move-node-to-workspace n_Notes', 'mode main']
+    y = ['move-node-to-workspace z_Browser', 'mode main']
+    i = ['move-node-to-workspace i_Databricks', 'mode main']
+    u = ['move-node-to-workspace u_Terminal', 'mode main']
+
+    # down = 'volume down'
+    # up = 'volume up'
+    # shift-down = ['volume set 0', 'mode main']
