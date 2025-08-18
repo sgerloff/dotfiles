@@ -23,11 +23,41 @@ if wezterm.target_triple:find("apple") then
 end
 config.window_decorations = "RESIZE"
 
+-- toggle terminal
+local function toggle_terminal(window, pane)
+  local panes = window:active_tab():panes()
+  wezterm.log_info(pane:get_foreground_process_info().executable)
+  if #panes == 1 then
+    window:perform_action(wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }), pane)
+    return
+  end
+  local process = pane:get_foreground_process_info().executable
+  if process:match("nvim") then
+    if pane.is_zoomed then
+      window:perform_action(wezterm.action.TogglePaneZoomState, pane)
+      window:perform_action(wezterm.action.ActivatePaneDirection "Down", pane)
+      return
+    else
+      window:perform_action(wezterm.action.ActivatePaneDirection "Down", pane)
+      return
+    end
+  else
+    window:perform_action(wezterm.action.ActivatePaneDirection "Up", pane)
+    window:perform_action(wezterm.action.TogglePaneZoomState, pane)
+    return
+  end
+end
+
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   {
     key = "s",
     mods = "LEADER|CTRL",
+    action = wezterm.action_callback(toggle_terminal)
+  },
+  {
+    key = "s",
+    mods = "LEADER",
     action = wezterm.action.ActivateCommandPalette
   },
   {
@@ -189,7 +219,7 @@ local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smar
 smart_splits.apply_to_config(config, {
   direction_keys = { "h", "j", "k", "l" },
   modifiers = {
-    move = "CTRL | SHIFT",
+    move = "CTRL",
     resize = "ALT"
   }
 })
