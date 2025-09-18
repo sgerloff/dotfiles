@@ -219,7 +219,7 @@ local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smar
 smart_splits.apply_to_config(config, {
   direction_keys = { "h", "j", "k", "l" },
   modifiers = {
-    move = "CTRL",
+    move = "CTRL | SHIFT",
     resize = "ALT"
   }
 })

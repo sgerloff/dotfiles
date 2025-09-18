@@ -32,8 +32,8 @@ return {
       keymaps = {
         toggle_repl = "<leader>rt", -- toggles the repl open and closed.
         restart_repl = "<leader>rT", -- calls `IronRestart` to restart the repl
-        send_motion = "<leader>rr",
-        visual_send = "<leader>rr",
+        send_motion = "<leader>rm",
+        visual_send = "<leader>rv",
         send_file = "<leader>rf",
         send_line = "<leader>RR",
         send_paragraph = "<leader>rR",

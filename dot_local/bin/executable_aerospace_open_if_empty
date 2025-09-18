@@ -10,8 +10,8 @@ OPEN_CMD=$2
 
 NUM_WINDOWS=$(aerospace list-windows --workspace $WORKSPACE --count)
 if [ "$NUM_WINDOWS" = "0" ]; then
-  aerospace summon-workspace $WORKSPACE
+  aerospace workspace $WORKSPACE
   eval "$OPEN_CMD"
 else
-  aerospace summon-workspace $WORKSPACE
+  aerospace workspace $WORKSPACE
 fi
