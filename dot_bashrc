@@ -306,3 +306,7 @@ export PIP_REQUIRE_VIRTUALENV=true # Avoid installing to global environment
 if [ -x "$(command -v direnv)" ]; then
 	eval "$(direnv hook bash)"
 fi
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/sascha.gerloff/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
