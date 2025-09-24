@@ -67,7 +67,7 @@ def handle(data: dict, vd=vd, logger=None):
             requested_sheet = vd.openPath(path)
 
         logger.debug(f"Push {requested_sheet}")
-        vd.push(requested_sheet)
+        vd.replace(requested_sheet)
         return
     if cmd == "test":
         return
