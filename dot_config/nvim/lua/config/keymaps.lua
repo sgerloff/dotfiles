@@ -30,11 +30,15 @@ vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Do
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Down", expr = true, silent = true })
 
+-- Better movement
+vim.keymap.set({ "n" }, "<C-d>", "<C-d>zz", { desc = "Half-page down", noremap = true })
+vim.keymap.set({ "n" }, "<C-u>", "<C-u>zz", { desc = "Half-page up", noremap = true })
 
 vim.keymap.set("n", "<leader>wb", "<C-w>s", { desc = "Split Window Below", remap = true })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split Window Right", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-w>c", { desc = "Delete Window", remap = true })
-vim.keymap.set("n", "<leader>ww", "<cmd>write all<CR>", { desc = "Write All", remap = true })
+vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>", { desc = "Write File", remap = true })
+vim.keymap.set("n", "<leader>wW", "<cmd>wa<CR>", { desc = "Write All", remap = true })
 
 
 -- Undo breakpoint for better undo (e.g. undo until the last ',')
@@ -218,8 +222,8 @@ M.LazyPluginKeys["mrjones2014/smart-splits.nvim"] = {
 M.LazyPluginKeys["folke/flash.nvim"] = {
 
   -- { "<leader><leader>", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-  { "ö", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-  { "Ö",       mode = { "n", "x", "o" }, function() require("flash").treesitter_search() end, desc = "Flash Treesitter" },
+  { "ö", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+  { "Ö", mode = { "n", "x", "o" }, function() require("flash").treesitter_search() end, desc = "Flash Treesitter" },
   -- { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
   -- { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
   -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
