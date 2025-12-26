@@ -18,7 +18,8 @@ return {
 
       require("mini.ai").setup({
         custom_textobjects = {
-          F = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+          f = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+          F = require("mini.ai").gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }),
           o = require("mini.ai").gen_spec.treesitter({
             a = { "@loop.outer", "@conditional.outer" },
             i = { "@loop.inner", "@conditional.inner" },
