@@ -14,7 +14,8 @@ vim.opt.smartindent = true
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
+vim.opt.number = true
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes:2"
 vim.opt.conceallevel = 2 -- Handles conversion of characters to symbols better
