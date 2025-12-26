@@ -1,6 +1,9 @@
 return {
   "Vigemus/iron.nvim",
   enabled = true,
+  dependencies = {
+    "folke/snacks.nvim"
+  },
   config = function()
     local iron = require("iron.core")
     local view = require("iron.view")
@@ -20,17 +23,31 @@ return {
           }
         },
         repl_filetype = function(bufnr, ft)
-          local supported_ft = {"python"}
+          local supported_ft = { "python" }
           if supported_ft[ft] ~= nil then
             return ft
           else
             return "python"
           end
         end,
-        repl_open_cmd = view.right(80),
+        -- repl_open_cmd = view.right(80),
+        repl_open_cmd = function(bufnr)
+          local snacks_win = require("snacks").win(
+            {
+              buf = bufnr,
+              position = "right",
+              width = 0.3,
+              style = "terminal",
+              wo = {
+                winbar = "Iron REPL"
+              }
+            }
+          )
+          return snacks_win.win
+        end,
       },
       keymaps = {
-        toggle_repl = "<leader>rt", -- toggles the repl open and closed.
+        toggle_repl = "<leader>rt",  -- toggles the repl open and closed.
         restart_repl = "<leader>rT", -- calls `IronRestart` to restart the repl
         send_motion = "<leader>rm",
         visual_send = "<leader>rv",
