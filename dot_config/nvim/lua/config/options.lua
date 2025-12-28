@@ -13,6 +13,8 @@ vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.smartindent = true
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.relativenumber = false
 vim.opt.number = true
