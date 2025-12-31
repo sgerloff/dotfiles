@@ -1,0 +1,18 @@
+!# /bin/bash
+
+SCRIPT_PATH=/tmp/install_homebrew.sh
+
+curl -fsSL -o /tmp/install_homebrew.sh https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+if [ -x "$(command -v bat)" ]; then
+	bat $SCRIPT_PATH
+else
+	cat $SCRIPT_PATH
+fi
+read -p "Did you review the script and want to execute it? [y/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	chmod a+x $SCRIPT_PATH
+	$SCRIPT_PATH
+else
+	echo "Abort homebrew installation!"
+fi

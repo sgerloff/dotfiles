@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if ! command -v aerospace >/dev/null 2>&1; then
+  echo "Aerospace installation not found"
+  exit 1
+fi
+
+WORKSPACE=$1
+OPEN_CMD=$2
+
+NUM_WINDOWS=$(aerospace list-windows --workspace $WORKSPACE --count)
+if [ "$NUM_WINDOWS" = "0" ]; then
+  aerospace workspace $WORKSPACE
+  eval "$OPEN_CMD"
+else
+  aerospace workspace $WORKSPACE
+fi

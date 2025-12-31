@@ -1,0 +1,10 @@
+!# /bin/bash
+
+NVIM_PYTHON_VENV="$HOME/.local/share/nvim_venv"
+if [ ! -d $NVIM_PYTHON_VENV ]; then
+	pyenv global 3.10
+	python -m venv ~/.local/share/nvim_venv
+	source ~/.local/share/nvim_venv/bin/activate
+	pip install --upgrade pip
+	pip install pynvim
+fi

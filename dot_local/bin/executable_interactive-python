@@ -1,0 +1,4 @@
+#! /bin/bash
+
+uv pip freeze --exclude-editable > /tmp/requirements.txt
+uv pip install -c /tmp/requirements.txt debugpy ipython matplotlib plotly rich ipykernel catppuccin
