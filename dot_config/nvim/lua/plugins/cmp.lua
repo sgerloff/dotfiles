@@ -1,7 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    version = "^0.0.2",
+    version = "*",
     enabled = true,
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",

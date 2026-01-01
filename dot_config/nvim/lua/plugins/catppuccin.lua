@@ -1,7 +1,7 @@
 return {
   {
     "catppuccin/nvim",
-    version = "^1.9",
+    version = "*",
     enabled = true,
     name = "catppuccin",
     priority = 1000,

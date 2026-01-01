@@ -1,7 +1,7 @@
 return {
   {
     "folke/which-key.nvim",
-    version = "^3.16.0",
+    version = "*",
     enabled = true,
     event = "VeryLazy",
     opts = {

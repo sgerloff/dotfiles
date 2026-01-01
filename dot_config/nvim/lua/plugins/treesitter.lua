@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "^0.9.3",
+    version = "*",
     enabled = true,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects"

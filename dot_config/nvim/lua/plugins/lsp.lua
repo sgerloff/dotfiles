@@ -96,7 +96,7 @@ end
 return {
   {
     "williamboman/mason.nvim",
-    version = "^1.10.0",
+    version = "*",
     enabled = true,
     config = function()
       require("mason").setup()
@@ -104,7 +104,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    version = "^1.31.0",
+    version = "*",
     enabled = true,
     config = function()
       require("mason-lspconfig").setup({
@@ -115,7 +115,7 @@ return {
   },
   {
     "folke/lazydev.nvim",
-    version = "^1.9.0",
+    version = "*",
     ft = "lua", -- only load on lua files
     opts = {
       library = {
@@ -127,7 +127,7 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    version = "^8.4.0",
+    version = "*",
     enabled = "true",
     keys = require("config/keymaps").LazyPluginKeys["stevearc/conform.nvim"],
     config = function()
@@ -155,7 +155,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    version = "^1.6.0",
+    version = "*",
     enabled = true,
     dependencies = {
       { "williamboman/mason.nvim" },
