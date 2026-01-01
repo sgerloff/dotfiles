@@ -1,6 +1,7 @@
 -- Keymaps are automatically laded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+local utils = require("lazy.config.utils")
 
 -- Lowercase global marks
 local low = function(i) return string.char(97 + i) end
@@ -159,7 +160,7 @@ M.LazyPluginKeys["folke/snacks.nvim"] = {
   {
     "<leader>tP",
     function()
-      Snacks.terminal.toggle(require("config.utils").infer_python_shell(),
+      Snacks.terminal.toggle(utils.infer_python_shell(),
         { win = { position = "right", ft = "python", min_width = 85, width = 0.4 } })
     end,
     desc = "Toggle Python Terminal"
@@ -167,26 +168,26 @@ M.LazyPluginKeys["folke/snacks.nvim"] = {
   -- UI
   { "<leader>uz", function() Snacks.zen.zen() end,            desc = "Zoom Buffer" },
   { "<leader>uZ", function() Snacks.zen.zoom() end,           desc = "Zoom Buffer" },
-  { "<leader>us", require("config.utils").toggle_scratch_win, desc = "Scratch Buffer" }
+  { "<leader>us", utils.toggle_scratch_win, desc = "Scratch Buffer" }
 }
 ---@diagnostic enable: undefined-global
 
 M.LazyPluginKeys["mfussenegger/nvim-dap"] = {
   -- { "<leader>da", function() require("dap").continue({ before = get_args }) end,                        desc = "Run with Args" },
-  { "<leader>dB", function() require("config.utils").dapui_float_element("breakpoints", 0.7) end,       desc = "Breakpoints (Floating)" },
-  { "<leader>dC", function() require("config.utils").dapui_float_element("console", 0.7) end,           desc = "Console (Floating)" },
+  { "<leader>dB", function() utils.dapui_float_element("breakpoints", 0.7) end,       desc = "Breakpoints (Floating)" },
+  { "<leader>dC", function() utils.dapui_float_element("console", 0.7) end,           desc = "Console (Floating)" },
   { "<leader>dD", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
   { "<leader>dG", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
   { "<leader>dO", function() require("dap").step_over() end,                                            desc = "Step Over" },
   { "<leader>dP", function() require("dap").pause() end,                                                desc = "Pause" },
-  { "<leader>dR", function() require("config.utils").dapui_float_element("repl", 0.7) end,              desc = "REPL (Floating)" },
+  { "<leader>dR", function() utils.dapui_float_element("repl", 0.7) end,              desc = "REPL (Floating)" },
   { "<leader>dS", function() require("dap").session() end,                                              desc = "Session" },
   { "<leader>dT", function() require("dap").terminate() end,                                            desc = "Terminate" },
   { "<leader>dW", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
   { "<leader>dc", function() require("dap").continue() end,                                             desc = "Run/Continue" },
   { "<leader>dd", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
   { "<leader>de", function() require("dapui").eval() end,                                               desc = "Eval",                        mode = { "n", "v" } },
-  { "<leader>df", function() require("config.utils").dapui_float_element("stacks", 0.7) end,            desc = "Stacks and Frames (Floating)" },
+  { "<leader>df", function() utils.dapui_float_element("stacks", 0.7) end,            desc = "Stacks and Frames (Floating)" },
   { "<leader>dg", function() require("dap").goto_() end,                                                desc = "Go to Line (No Execute)" },
   { "<leader>di", function() require("dap").step_into() end,                                            desc = "Step Into" },
   { "<leader>dj", function() require("dap").down() end,                                                 desc = "Down" },
@@ -194,10 +195,10 @@ M.LazyPluginKeys["mfussenegger/nvim-dap"] = {
   { "<leader>dl", function() require("dap").run_last() end,                                             desc = "Run Last" },
   { "<leader>do", function() require("dap").step_out() end,                                             desc = "Step Out" },
   { "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Toggle REPL" },
-  { "<leader>ds", function() require("config.utils").dapui_float_element("scopes", 0.7) end,            desc = "Scopes (Floating)" },
+  { "<leader>ds", function() utils.dapui_float_element("scopes", 0.7) end,            desc = "Scopes (Floating)" },
   { "<leader>dt", function() require("dap-python").test_method() end,                                   desc = "Pytest Function",             mode = { "n" } },
   { "<leader>du", function() require("dapui").toggle({}) end,                                           desc = "Dap UI" },
-  { "<leader>dw", function() require("config.utils").dapui_float_element("watches", 0.7) end,           desc = "Watches (Floating)" },
+  { "<leader>dw", function() utils.dapui_float_element("watches", 0.7) end,           desc = "Watches (Floating)" },
 }
 
 M.LazyPluginKeys["mrjones2014/smart-splits.nvim"] = {
