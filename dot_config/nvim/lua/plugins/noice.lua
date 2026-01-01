@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  version = "^4.9.0",
+  version = "*",
   enabled = true,
   event = "VeryLazy",
   opts = {

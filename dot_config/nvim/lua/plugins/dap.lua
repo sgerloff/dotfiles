@@ -7,12 +7,12 @@ return {
   {
     "nvim-neotest/nvim-nio",
     enabled = true,
-    version = "^1.10.1"
+    version = "*"
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
     enabled = true,
-    version = "^2.4.0",
+    version = "*",
     dependencies = {
       "mason.nvim"
     },
@@ -33,7 +33,7 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     enabled = true,
-    version = "^4.0.0",
+    version = "*",
     dependencies = {
       "nvim-neotest/nvim-nio",
     },
@@ -88,7 +88,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     enabled = true,
-    version = "^0.9.0",
+    version = "*",
     dependencies = {
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",

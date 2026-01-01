@@ -5,7 +5,7 @@ return {
   },
   {
     "echasnovski/mini.nvim",
-    version = "^0.15.0",
+    version = "*",
     enabled = true,
     dependencies = {
       "rafamadriz/friendly-snippets",

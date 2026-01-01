@@ -1,7 +1,7 @@
 return {
   {
     "folke/snacks.nvim",
-    version = "^2.20.0",
+    version = "*",
     enabled = true,
     lazy = false,
     priority = 1000,
