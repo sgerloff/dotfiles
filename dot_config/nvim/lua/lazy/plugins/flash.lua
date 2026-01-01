@@ -1,3 +1,4 @@
+local keymaps = require("lazy.config.keymaps")
 return {
   {
     "folke/flash.nvim",
@@ -7,6 +8,6 @@ return {
         mode = "fuzzy"
       }
     },
-    keys = require("config/keymaps").LazyPluginKeys["folke/flash.nvim"]
+    keys = keymaps.LazyPluginKeys["folke/flash.nvim"]
   }
 }

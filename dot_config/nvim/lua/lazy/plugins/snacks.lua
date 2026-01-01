@@ -1,3 +1,4 @@
+local keymaps = require("lazy.config.keymaps")
 return {
   {
     "folke/snacks.nvim",
@@ -5,7 +6,7 @@ return {
     enabled = true,
     lazy = false,
     priority = 1000,
-    keys = require("config/keymaps").LazyPluginKeys["folke/snacks.nvim"],
+    keys = keymaps.LazyPluginKeys["folke/snacks.nvim"],
     opts = {
       picker = {},
       explorer = {},

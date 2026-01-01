@@ -1,3 +1,5 @@
+local keymaps = require("lazy.config.keymaps")
+local utils = require("lazy.config.utils")
 return {
   {
     "theHamsta/nvim-dap-virtual-text",
@@ -98,13 +100,13 @@ return {
       "jbyuki/one-small-step-for-vimkind",
     },
     keys = function()
-      return require("config/keymaps").LazyPluginKeys["mfussenegger/nvim-dap"]
+      return keymaps.LazyPluginKeys["mfussenegger/nvim-dap"]
     end,
     config = function()
       require("mason-nvim-dap").setup()
 
       local dap_python = require("dap-python")
-      dap_python.setup(require("config.utils").get_python_path())
+      dap_python.setup(utils.get_python_path())
       dap_python.test_runner = "pytest"
 
       local dap = require("dap")
