@@ -5,7 +5,7 @@ return {
     event = "VeryLazy",
     opts = {
       search = {
-        mode = "fuzzy"
+        mode = "exact"
       }
     },
     keys = keymaps.LazyPluginKeys["folke/flash.nvim"]
