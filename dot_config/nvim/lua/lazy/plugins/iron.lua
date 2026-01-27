@@ -15,7 +15,7 @@ return {
         repl_definition = {
           python = {
             command = function()
-              python_path = require("config.utils").infer_python_shell()
+              python_path = require("lazy.config.utils").infer_python_shell()
               return { python_path, "--no-autoindent" }
             end,
             format = common.bracketed_paste_python,
