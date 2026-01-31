@@ -6,7 +6,8 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "pyrefly",
+        -- "pyrefly",
+        "basedpyright",
         "ruff",
         "bashls",
       },
