@@ -2,3 +2,7 @@
 require("lazy.config")
 require("lazy.lazy")
 require("lazy.lsp")
+
+vim.g.disabled_lsps = {
+  "basedpyright"
+}
