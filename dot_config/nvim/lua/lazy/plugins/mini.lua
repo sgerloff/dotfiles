@@ -13,7 +13,41 @@ return {
     },
     config = function()
       require("mini.statusline").setup({
-        use_icons = true
+        use_icons = true,
+        content = {
+          active = function()
+            -- H.use_icons         = H.get_config().use_icons
+            local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+            local git           = MiniStatusline.section_git({ trunc_width = 40 })
+            local diff          = MiniStatusline.section_diff({ trunc_width = 75 })
+            local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+            local lsp           = MiniStatusline.section_lsp({ trunc_width = 75 })
+            local filename      = MiniStatusline.section_filename({ trunc_width = 140 })
+            local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+            local location      = MiniStatusline.section_location({ trunc_width = 75 })
+            local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+            -- H.use_icons         = nil
+
+            -- New section to indicate macro recording:
+            local recording     = vim.fn.reg_recording()
+            local macro         = recording ~= "" and ("Recording @" .. recording) or ""
+
+            -- Usage of `MiniStatusline.combine_groups()` ensures highlighting and
+            -- correct padding with spaces between groups (accounts for 'missing'
+            -- sections, etc.)
+            return MiniStatusline.combine_groups({
+              { hl = mode_hl,                 strings = { mode } },
+              { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+              '%<', -- Mark general truncate point
+              { hl = 'MiniStatuslineFilename', strings = { filename } },
+              '%=', -- End left alignment
+              { hl = 'ErrorMsg',               strings = { macro } },
+              { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+              { hl = mode_hl,                  strings = { search, location } },
+            })
+          end,
+          inactive = nil,
+        }
       })
 
       require("mini.ai").setup({
@@ -37,6 +71,7 @@ return {
       })
 
       require("mini.comment").setup({})
+      require("mini.icons").setup({})
       require("mini.pairs").setup({})
       require("mini.move").setup({})
       require("mini.misc").setup({})

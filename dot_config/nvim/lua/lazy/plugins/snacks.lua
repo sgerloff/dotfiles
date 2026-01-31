@@ -10,7 +10,7 @@ return {
     opts = {
       picker = {},
       explorer = {},
-      statuscolumn = { enabled = true },
+      statuscolumn = { enabled = false },
       zen = {
         toggles = {
           dim = false,

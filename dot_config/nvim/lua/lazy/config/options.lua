@@ -23,7 +23,6 @@ vim.opt.signcolumn = "yes:2"
 vim.opt.conceallevel = 2 -- Handles conversion of characters to symbols better
 vim.opt.cursorline = true
 vim.opt.foldlevel = 99   -- practically keep all folds open
-vim.opt.signcolumn = "yes"
 vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 vim.opt.laststatus = 3
 vim.opt.splitkeep = "screen"
