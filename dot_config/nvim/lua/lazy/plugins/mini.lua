@@ -1,3 +1,4 @@
+local keymaps = require("lazy.config.keymaps")
 return {
   {
     "rafamadriz/friendly-snippets",
@@ -11,6 +12,7 @@ return {
       "rafamadriz/friendly-snippets",
       "nvim-treesitter/nvim-treesitter-textobjects"
     },
+    keys = keymaps.LazyPluginKeys["echasnovski/mini.nvim"],
     config = function()
       require("mini.statusline").setup({
         use_icons = true,
@@ -71,6 +73,8 @@ return {
       })
 
       require("mini.comment").setup({})
+      require("mini.diff").setup({ view = { style = "number" } })
+      require("mini.git").setup({}) -- possibly needed for diff to work better?
       require("mini.icons").setup({})
       require("mini.pairs").setup({})
       require("mini.move").setup({})
