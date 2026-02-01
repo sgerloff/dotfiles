@@ -255,6 +255,36 @@ M.LazyPluginKeys["lewis6991/gitsigns.nvim"] = {
     mode = { "n" },
     desc = "Gitsigns: Review Diff"
   },
+  {
+    "<leader>gC",
+    mode = { "n" },
+    function()
+      Snacks.picker.git_log({
+        confirm = function(picker, item)
+          picker:close()
+          if item and item.commit then
+            require("gitsigns").change_base(item.commit, true)
+          end
+        end,
+      })
+    end,
+    desc = "Gitsigns: Change Revision"
+  },
+  {
+    "<leader>gc",
+    mode = { "n" },
+    function()
+      Snacks.picker.git_branches({
+        confirm = function(picker, item)
+          picker:close()
+          if item and item.branch then
+            require("gitsigns").change_base(item.branch, true)
+          end
+        end,
+      })
+    end,
+    desc = "Gitsigns: Change Revision"
+  },
 }
 
 
