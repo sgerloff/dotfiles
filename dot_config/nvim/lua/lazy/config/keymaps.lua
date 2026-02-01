@@ -230,9 +230,33 @@ M.LazyPluginKeys["folke/flash.nvim"] = {
   -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 }
 
-M.LazyPluginKeys["echasnovski/mini.nvim"] = {
-  { "<leader>go", mode = { "n" }, function() require("mini.diff").toggle_overlay() end, desc = "Toggle git diff overlay" }
+
+M.LazyPluginKeys["lewis6991/gitsigns.nvim"] = {
+  { "<leader>gh", mode = { "n" }, function() require("gitsigns").preview_hunk_inline() end,       desc = "Gitsigns: Preview Hunk" },
+  -- { "<leader>gr", mode = { "n" }, function() require("gitsigns").diffthis() end,                  desc = "Gitsigns: Review Diff" },
+  { "<leader>gB", mode = { "n" }, function() require("gitsigns").toggle_current_line_blame() end, desc = "Gitsigns: Git Blame" },
+  { "<leader>gw", mode = { "n" }, function() require("gitsigns").toggle_word_diff() end,          desc = "Gitsigns: Toggle Word Diff" },
+  {
+    "<leader>gr",
+    function()
+      if vim.wo.diff then
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+          local buf = vim.api.nvim_win_get_buf(win)
+          local buf_name = vim.api.nvim_buf_get_name(buf)
+
+          if buf_name:match("gitsigns://") then
+            vim.api.nvim_win_close(win, true)
+          end
+        end
+      else
+        require("gitsigns").diffthis()
+      end
+    end,
+    mode = { "n" },
+    desc = "Gitsigns: Review Diff"
+  },
 }
+
 
 setmetatable(M.LazyPluginKeys, {
   __index = function(_, _)
