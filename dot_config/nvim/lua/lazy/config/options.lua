@@ -8,6 +8,9 @@ vim.g.python3_host_prog = "$HOME/.local/share/nvim_venv/bin/python3"
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
+
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.smartindent = true

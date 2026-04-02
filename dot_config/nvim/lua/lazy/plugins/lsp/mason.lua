@@ -10,7 +10,7 @@ return {
         -- "basedpyright",
         "ruff",
         "bashls",
-        "harper-ls"
+        "harper_ls"
       },
       automatic_installation = true,
     },
