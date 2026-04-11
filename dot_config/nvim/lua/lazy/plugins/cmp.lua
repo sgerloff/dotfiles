@@ -7,6 +7,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "abeldekat/cmp-mini-snippets",
       -- "PaterJason/cmp-conjure",
     },
     opts = function()
@@ -42,7 +43,11 @@ return {
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "path" }
+          { name = "path" },
+          {
+            name = "mini_snippets",
+            use_item_cache = false
+          }
         }, {
           { name = "buffer" },
         }
