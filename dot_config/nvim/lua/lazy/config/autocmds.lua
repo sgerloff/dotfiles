@@ -18,3 +18,18 @@ vim.api.nvim_create_autocmd("FileType", {
   command = "wincmd L"
 })
 
+vim.api.nvim_create_autocmd(
+  'User',
+  {
+    pattern = 'MiniSnippetsSessionStart',
+    callback = function()
+      local au_opts = { pattern = '*:n', once = true }
+      au_opts.callback = function()
+        while MiniSnippets.session.get() do
+          MiniSnippets.session.stop()
+        end
+      end
+      vim.api.nvim_create_autocmd('ModeChanged', au_opts)
+    end
+  }
+)

@@ -54,6 +54,7 @@ return {
 
       require("mini.ai").setup({
         custom_textobjects = {
+          k = require("mini.ai").gen_spec.treesitter({ a = "@value.outer", i = "@value.inner" }),
           f = require("mini.ai").gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
           F = require("mini.ai").gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }),
           o = require("mini.ai").gen_spec.treesitter({
@@ -62,8 +63,7 @@ return {
           }),
           c = require("mini.ai").gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),
           C = require("mini.ai").gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }),
-          s = require("mini.ai").gen_spec.treesitter({ a = "@assignment.outer", i = "@assignment.rhs" }),
-          S = require("mini.ai").gen_spec.treesitter({ a = "@assignment.inner", i = "@assignment.lhs" }),
+          v = require("mini.ai").gen_spec.treesitter({ a = "@assignment.lhs", i = "@assignment.rhs" }),
         },
         mappings = {
           goto_left = "ga",
@@ -88,12 +88,13 @@ return {
       require("mini.snippets").setup({
         snippets = {
           gen_loader.from_lang(),
+          gen_loader.from_file("~/.config/my_snippets/python.json")
         },
         mappings = {
-          expand = "<C-c>",
-          jump_next = "<C-n>",
-          jump_prev = "<C-p>",
-          stop = "<C-c>"
+          expand = "<C-s>",   -- handled by cmp usually
+          jump_next = "<C-A-l>",
+          jump_prev = "<C-A-h>",
+          stop = "<C-s>"
         }
       })
     end
