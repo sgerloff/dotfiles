@@ -1,0 +1,79 @@
+{
+  "python_class_args": {
+    "prefix": "!pc",
+    "body": [
+      "class ${1:ClassName}:",
+      "\tdef __init__(self, ${2:arg}: ${3:Any} = ${4:None}) -> None:",
+      "\t\tself.${2} = ${2}",
+      "\t\t${0:pass}"
+    ],
+    "description": "Python class with arguments"
+  },
+  "pydantic_basemodel": {
+    "prefix": "!pdm",
+    "body": [
+      "class ${1:Output}(pydantic.BaseModel):",
+      "\t${2:field}: ${3:str} = pydantic.Field(description=\"${0:...}\")"
+    ],
+    "description": "Pydantic BaseModel for LLM structured output"
+  },
+  "pydantic_field": {
+    "prefix": "!pdf",
+    "body": ["${1:field}: ${2:str} = pydantic.Field(description=\"${0:...}\")"],
+    "description": "Single Pydantic field with description"
+  },
+  "langchain_structured_chain": {
+    "prefix": "!lcc",
+    "body": [
+      "import pydantic",
+      "import textwrap",
+      "",
+      "from langchain_openai import ChatOpenAI",
+      "from langchain_core.prompts import ChatPromptTemplate",
+      "",
+      "",
+      "class ${1:Output}(pydantic.BaseModel):",
+      "\t${2:field}: ${3:str} = pydantic.Field(description=\"${4:description}\")",
+      "",
+      "",
+      "prompt = ChatPromptTemplate.from_messages(",
+      "\t[",
+      "\t\t(",
+      "\t\t\t\"system\",",
+      "\t\t\ttextwrap.dedent(",
+      "\t\t\t\t\"\"\"",
+      "\t\t\t\t${0:You are a helpful assistant...}",
+      "\t\t\t\t\"\"\"",
+      "\t\t\t),",
+      "\t\t)",
+      "\t]",
+      ")",
+      "",
+      "llm = ChatOpenAI(model=\"gpt-5.4\").with_structured_output(${1:Output})",
+      "chain = prompt | llm"
+    ],
+    "description": "Scaffold a LangChain chain with structured output"
+  },
+  "pyspark_imports": {
+    "prefix": "!psi",
+    "body": "from pyspark.sql import functions as f, types as t, Window, DataFrame",
+    "description": "Standard PySpark imports"
+  },
+  "pyspark_col_alias": {
+    "prefix": "!psa",
+    "body": "f.col(\"${1:field}\").alias(\"${2:name}\")",
+    "description": "PySpark column with alias"
+  },
+  "pyspark_filter_latest": {
+    "prefix": "!psr",
+    "body": [
+      ".withColumn(\"__rank\", f.row_number().over(",
+      "\tWindow.partitionBy(\"${1:partition_col}\").orderBy(f.desc(\"${2:order_col}\"))",
+      "))",
+      ".filter(f.col(\"__rank\") == 1)",
+      ".drop(\"__rank\")",
+      "$0"
+    ],
+    "description": "Filter for latest record per group using Window"
+  }
+}
