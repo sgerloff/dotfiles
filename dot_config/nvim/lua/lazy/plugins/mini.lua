@@ -10,7 +10,7 @@ return {
     enabled = true,
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "nvim-treesitter/nvim-treesitter-textobjects"
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" }
     },
     keys = keymaps.LazyPluginKeys["echasnovski/mini.nvim"],
     config = function()
@@ -91,7 +91,7 @@ return {
           gen_loader.from_file("~/.config/my_snippets/python.json")
         },
         mappings = {
-          expand = "<C-s>",   -- handled by cmp usually
+          expand = "<C-s>", -- handled by cmp usually
           jump_next = "<C-A-l>",
           jump_prev = "<C-A-h>",
           stop = "<C-s>"

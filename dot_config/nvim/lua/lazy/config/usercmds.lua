@@ -21,3 +21,25 @@ end, {})
 vim.api.nvim_create_user_command("QfDiagnosticsE", function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end, {})
+
+
+vim.api.nvim_create_user_command("TSEnsureInstalled", function()
+  local TS = require("nvim-treesitter")
+  local ensure_installed = {
+    "vim",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "vimdoc",
+    "just",
+    "bash",
+    "json",
+    "mermaid",
+    "csv",
+    "tsv",
+    "yaml",
+    "html",
+  }
+  TS.install(ensure_installed)
+end, {})
