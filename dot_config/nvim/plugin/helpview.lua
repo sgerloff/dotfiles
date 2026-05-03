@@ -1,0 +1,1 @@
+-- helpview.nvim: better help file rendering (no setup needed)
