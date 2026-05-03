@@ -1,4 +1,4 @@
-local utils = require("lazy.config.utils")
+local utils = require("utils")
 return {
   on_init = function(client)
     client.config.settings.pythonPath = utils.get_python_path()
