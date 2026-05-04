@@ -21,7 +21,7 @@ require("noice").setup({
       ["cmp.entry.get_documentation"] = true,
     },
     hover = { enabled = true },
-    signature = { enabled = false }, -- blink.cmp handles signature help
+    signature = { enabled = true },
     progress = { enabled = true },
   },
   presets = {

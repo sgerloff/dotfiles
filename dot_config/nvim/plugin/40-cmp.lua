@@ -10,7 +10,7 @@ require("blink.cmp").setup({
     ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
     ["<C-n>"] = { "select_next", "fallback_to_mappings" },
     ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-    ["<C-h>"] = { "show_signature", "hide_signature" },
+
   },
 
   completion = {
@@ -32,7 +32,7 @@ require("blink.cmp").setup({
     },
   },
 
-  signature = { enabled = true },
+  signature = { enabled = false },
 
   fuzzy = { implementation = "prefer_rust_with_warning" },
 })
