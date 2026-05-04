@@ -12,7 +12,7 @@ require("noice").setup({
   },
   notify = {
     enabled = true,
-    view = "notify", -- falls through to vim.notify (handled by mini.notify)
+    view = "notify",
   },
   lsp = {
     override = {

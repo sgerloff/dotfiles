@@ -57,7 +57,7 @@ require("mini.icons").setup({})
 require("mini.pairs").setup({})
 require("mini.move").setup({})
 require("mini.misc").setup({})
-require("mini.notify").setup({})
+-- require("mini.notify").setup({}) -- using noice notifications instead
 require("mini.operators").setup({})
 require("mini.splitjoin").setup({})
 require("mini.surround").setup({
