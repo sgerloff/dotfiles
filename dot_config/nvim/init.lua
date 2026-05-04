@@ -22,17 +22,13 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 -- Install and load all plugins
 vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+  { src = "https://github.com/catppuccin/nvim",  name = "catppuccin" },
   "https://github.com/folke/snacks.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/echasnovski/mini.nvim",
   "https://github.com/rafamadriz/friendly-snippets",
-  "https://github.com/hrsh7th/nvim-cmp",
-  "https://github.com/hrsh7th/cmp-nvim-lsp",
-  "https://github.com/hrsh7th/cmp-buffer",
-  "https://github.com/hrsh7th/cmp-path",
-  "https://github.com/abeldekat/cmp-mini-snippets",
+  { src = "https://github.com/saghen/blink.cmp", version = "v1" },
   "https://github.com/williamboman/mason.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/folke/lazydev.nvim",
