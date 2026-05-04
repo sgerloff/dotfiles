@@ -50,6 +50,8 @@ vim.pack.add({
   "https://github.com/jbyuki/one-small-step-for-vimkind",
   "https://github.com/jay-babu/mason-nvim-dap.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/folke/noice.nvim",
 })
 
 -- Initialize Snacks global (required before plugin/ files use Snacks.keymap)
