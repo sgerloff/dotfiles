@@ -30,4 +30,10 @@ require("utils").map_keys(keys)
 require("jupynium").setup({
   python_host = vim.fn.expand("$HOME/.local/share/jupynium/bin/python"),
   use_default_keybindings = false,
+  textobjects = {
+    use_default_keybindings = false
+  },
+  autoscroll = {
+    focus = "output",
+  },
 })
