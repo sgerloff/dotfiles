@@ -60,6 +60,7 @@ end
 function M.infer_python_shell()
   local venv_path = M.get_python_path()
   if venv_path == nil then
+    vim.notify("REPL: No virtualenv detected, using system python", vim.log.levels.WARN)
     return "python"
   end
 
@@ -67,9 +68,11 @@ function M.infer_python_shell()
   if vim.fn.filereadable(potential_ipython_path) == 1 then
     return potential_ipython_path
   end
+  vim.notify("REPL: ipython not installed in venv, using python; run interactive-python to install!", vim.log.levels.WARN)
   if vim.fn.filereadable(venv_path) == 1 then
     return venv_path
   end
+  vim.notify("REPL: venv python not readable at " .. venv_path .. ", falling back to system python", vim.log.levels.ERROR)
   return "python"
 end
 
