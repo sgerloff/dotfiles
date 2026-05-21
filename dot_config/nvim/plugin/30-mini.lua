@@ -69,7 +69,7 @@ local gen_loader = require("mini.snippets").gen_loader
 require("mini.snippets").setup({
   snippets = {
     gen_loader.from_lang(),
-    gen_loader.from_file("~/.config/my_snippets/python.json"),
+    gen_loader.from_file(vim.fn.expand("~/.config/my_snippets/python.json")),
   },
   mappings = {
     expand = "<C-s>",
